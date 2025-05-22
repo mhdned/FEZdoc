@@ -1,0 +1,6 @@
+# Default IDE directories and files
+.qodo
+.vscode
+
+# Optional ignores
+commands
