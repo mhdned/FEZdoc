@@ -1,0 +1,50 @@
+site_name: FEZdoc
+site_description: Remote Sensing Python Tools
+site_url: https://mhdned.github.io/FEZdoc/
+site_author: mhdned
+repo_url: https://github.com/mhdned/FEZdoc
+repo_name: FEZdoc
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+
+nav:
+  - Home:
+      - Overview: index.md
+      - Features: home/features.md
+  - Tools:
+      - Overview: tools/index.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+
+plugins:
+  - search
+
+extra_css:
+  - styles/extra.css
+
+extra_javascript:
+  - javascript/extra.js
