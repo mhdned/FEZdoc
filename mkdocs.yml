@@ -21,16 +21,9 @@ theme:
         icon: material/white-balance-sunny
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.top
-    - content.code.copy
-
-nav:
-  - Home:
-      - Overview: index.md
-      - Features: home/features.md
-  - Tools:
-      - Overview: tools/index.md
+    # - navigation.tabs
+    # - navigation.top
+    # - content.code.copy
 
 markdown_extensions:
   - admonition
