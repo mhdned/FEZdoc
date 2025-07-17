@@ -1,80 +1,167 @@
 # Welcome to **FEZrs**
 
-**FEZrs** is an advanced and modular Python library developed by [**FEZtool**](https://feztool.com/) for **remote sensing** and **geospatial analysis**. It provides a suite of powerful, efficient, and extensible tools for image processing, feature extraction, and spatial data analysis.
+**FEZrs** is a modern, modular, and open-source Python library by [**FEZtool**](https://feztool.com/), designed for **remote sensing** and **geospatial analysis**.
 
-Whether you’re a researcher, data scientist, or GIS developer, **FEZrs** helps you process satellite imagery, extract meaningful features, and integrate results into your scientific or commercial workflows with ease.
+From loading satellite images to extracting advanced features and running machine learning pipelines — FEZrs has your back.
+
+Whether you're a researcher, student, or GIS developer, you can quickly plug FEZrs into your workflows for fast, scalable, and reproducible results.
+
+---
+
+## What You Can Do with FEZrs
+
+- Load and process **GeoTIFF (.tif)** satellite imagery
+- Apply **machine learning** and **deep learning** tools for land classification
+- Extract **spectral**, **textural**, and **spatial** features (e.g., NDVI, GLCM)
+- Chain tools into custom pipelines with the `BaseTool` architecture
+- Perform **batch processing** for large-scale image datasets
+- Run everything with **minimal dependencies** — even without GDAL
 
 ---
 
 ## Project Goals
 
-The main objectives of **FEZrs** are:
-
-- To simplify **remote sensing workflows** with reusable, tested, and well-documented tools.
-- To provide a **modular architecture** so users can build their own pipelines with minimal effort.
-- To empower the **open geospatial community** by offering transparent and reproducible tools.
-- To reduce dependency on bulky tools (e.g., minimizing reliance on heavy libraries like GDAL).
-- To support **research, education, and innovation** in the field of Earth observation and satellite image analysis.
+- 🧩 **Modular design**: Build your own tools or extend existing ones with ease
+- 🧪 **Scientific utility**: Help researchers build reproducible and trustable pipelines
+- 🛠 **Lightweight processing**: Reduce dependency on heavy tools like GDAL
+- 🎓 **Education-first**: Empower learners and professionals with open, readable code
+- 🌐 **Community-focused**: Enable collaboration in the geospatial and EO community
 
 ---
 
-## What Can You Do with FEZrs?
+## Who’s It For?
 
-- Load, preprocess, and analyze **.tif** satellite images.
-- Apply **machine learning** and **deep learning** models for land use classification.
-- Extract **spectral, textural, and spatial features** from imagery.
-- Build **custom tools** using the flexible `BaseTool` class and integrate them into your workflows.
-- Perform batch processing of large datasets with consistent results.
+- Remote sensing researchers & Earth observation scientists
+- GIS developers & spatial data analysts
+- Students & educators in geospatial fields
+- Data scientists exploring satellite data
+- Anyone curious about the **Earth from above**
 
 ---
 
 ## Why Open Source?
 
-FEZrs is proudly open-source because:
+FEZrs is free and open because we believe in:
 
-- **Collaboration**: Innovation grows when people work together. Contributions from the global community improve the quality and capabilities of the software.
-- **Transparency**: Researchers and professionals need tools they can trust. Open-source code enables auditability and reproducibility.
-- **Education**: Students, educators, and self-learners can explore real-world tools to understand how geospatial processing works under the hood.
-- **Accessibility**: Open tools reduce entry barriers for individuals and organizations without access to expensive commercial solutions.
+- **Transparency**: You should trust the tools you use
+- **Reproducibility**: Share results, not just code
+- **Education**: Make advanced tools accessible to all
+- **Community**: Join us in building the future of geospatial AI
+
+---
+
+## Installation
+
+You can install **FEZrs** using your preferred Python package manager:
+
+### Using `pip` (PyPI)
+
+```bash
+pip install fezrs
+```
+
+### Using `conda` (Anaconda)
+
+```bash
+conda install -c FEZtool fezrs
+```
+
+### Using `mamba` (optional, faster conda alternative)
+
+```bash
+mamba install FEZtool::fezrs
+```
+
+> **Note:** The `mamba` command requires [Mamba](https://github.com/mamba-org/mamba) to be installed. If it's not installed, use the `conda` command instead.
+
+## Usage
+
+Example of applying a Gaussian filter to an image:
+
+```python
+from fezrs import EqualizeRGBCalculator
+
+equalize = EqualizeRGBCalculator(
+    blue_path="path/to/your/image_band.tif",
+    green_path="path/to/your/image_band.tif",
+    red_path="path/to/your/image_band.tif",
+)
+
+equalize.chart_export(output_path="./your/export/path")
+equalize.execute(output_path="./your/export/path")
+```
+
+## **Modules**
+
+FEZrs embraces the **"simple yet powerful"** design principle.
+
+Most tools in this library share a **unified structure** and can be used in a similar way — this makes learning and using FEZrs extremely easy and intuitive.
+
+> Unless noted otherwise, nearly **all modules can be used as shown in the [Usage](docs/getting-started.md) section**.
+
+These modules serve as **core calculators** for the main tool categories like:
+
+- `change_detection`
+- `clustering`
+- `filters`
+- `glcm`
+- `hsv`
+- `image_enhancement`
+- `import_tools`
+- `mosaic`
+- `pca`
+- `spectral_indices`
+- `spectral_profile`
+- `svm`
+
+Each module is accessible directly and can be plugged into custom workflows or pipelines built on `BaseTool`.
+
+---
+
+## Module Overview Table
+
+| Module                    | Input Bands    | Parameters                          | Description                           | Tool Category     |
+| ------------------------- | -------------- | ----------------------------------- | ------------------------------------- | ----------------- |
+| KMeansCalculator          | 1–N            | `n_clusters`, `init`, `max_iter`    | Applies K-Means clustering            | Clustering        |
+| GuassianCalculator        | 1              | `kernel_size`, `sigma`              | Gaussian blur filter                  | Filters           |
+| LaplacianCalculator       | 1              | `ksize`                             | Edge detection via Laplacian operator | Filters           |
+| MeanCalculator            | 1              | `kernel_size`                       | Mean (box) filter                     | Filters           |
+| MedianCalculator          | 1              | `kernel_size`                       | Median noise reduction                | Filters           |
+| SobelCalculator           | 1              | `dx`, `dy`, `ksize`                 | Sobel edge detector                   | Filters           |
+| GLCMCalculator            | 1              | `distances`, `angles`, `properties` | Texture extraction (GLCM)             | GLCM              |
+| HSVCalculator             | RGB            | —                                   | Converts RGB to HSV                   | HSV               |
+| IRHSVCalculator           | IR, R, G       | —                                   | Alternative HSV calc with IR          | HSV               |
+| AdaptiveCalculator        | 1              | `clip_limit`, `tile_grid_size`      | Adaptive histogram equalization       | Image Enhancement |
+| AdaptiveRGBCalculator     | RGB            | same as above                       | Adaptive hist. for RGB images         | Image Enhancement |
+| EqualizeCalculator        | 1              | —                                   | Global histogram equalization         | Image Enhancement |
+| EqualizeRGBCalculator     | RGB            | —                                   | Equalization for RGB                  | Image Enhancement |
+| FloatCalculator           | 1              | —                                   | Converts bands to float32             | Image Enhancement |
+| GammaCalculator           | 1              | `gamma`                             | Gamma correction                      | Image Enhancement |
+| GammaRGBCalculator        | RGB            | `gamma`                             | Gamma correction for RGB              | Image Enhancement |
+| LogAdjustCalculator       | 1              | `gain`                              | Logarithmic brightness adjust         | Image Enhancement |
+| OriginalCalculator        | 1              | —                                   | Returns unmodified input              | Image Enhancement |
+| OriginalRGBCalculator     | RGB            | —                                   | Returns RGB input unchanged           | Image Enhancement |
+| SigmoidAdjustCalculator   | 1              | `gain`, `cutoff`                    | Sigmoid contrast adjustment           | Image Enhancement |
+| PCACalculator             | N              | `n_components`                      | Principal Component Analysis          | PCA               |
+| AFVICalculator            | NIR, Red, Blue | —                                   | Calculates AFVI index                 | Spectral Indices  |
+| BICalculator              | SWIR1, SWIR2   | —                                   | Brightness Index                      | Spectral Indices  |
+| NDVICalculator            | NIR, Red       | —                                   | NDVI vegetation index                 | Spectral Indices  |
+| NDWICalculator            | Green, NIR     | —                                   | NDWI water index                      | Spectral Indices  |
+| SAVICalculator            | NIR, Red       | `L`                                 | Soil Adjusted Vegetation Index        | Spectral Indices  |
+| UICalculator              | Blue, Red      | —                                   | Urban Index                           | Spectral Indices  |
+| SpectralProfileCalculator | N              | `pixels`, `wavelengths`             | Extracts spectral signature           | Spectral Profile  |
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](https://github.com/FEZtool-team/FEZrs/blob/main/LICENSE) file for details.
-
-> You are free to use, modify, and distribute this software for personal, academic, or commercial purposes — just give proper credit.
-
----
-
-## Who Is It For?
-
-- Researchers working with **satellite data**
-- GIS developers and analysts
-- Students learning **remote sensing**
-- Data scientists interested in geospatial AI
-- Anyone who wants to explore **Earth from above**
-
----
-
-## Project Structure
-
-- `fezrs/tools/`: All tools built on the `BaseTool` class.
-- `fezrs/core/`: Core functionalities and shared utilities.
-- `examples/`: Sample workflows and usage demos.
-- `tests/`: Unit tests for the tools.
-- `docs/`: Documentation (coming soon!)
-
----
-
-## Contributing
-
-We welcome contributions! Check out our [contributing guide](https://github.com/FEZtool-team/FEZrs/blob/main/CONTRIBUTING.md) to learn how you can report bugs, request features, or submit improvements.
+Released under the [MIT License](https://github.com/FEZtool-team/FEZrs/blob/main/LICENSE).
+Use it freely in academic, commercial, or personal projects — just give us a shout-out!
 
 ---
 
 ## Stay in Touch
 
-- 📧 Contact us: [info@feztool.com](mailto:info@feztool.com)
 - 🌐 Website: [feztool.com](https://feztool.com/)
-- 🧪 Try other projects in the [FEZtool ecosystem](https://github.com/FEZtool-team)
+- 📧 Email: [info@feztool.com](mailto:info@feztool.com)
+- 🧪 Explore more: [FEZtool GitHub](https://github.com/FEZtool-team)
