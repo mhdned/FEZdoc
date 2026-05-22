@@ -5,8 +5,18 @@ site_author: mhdned
 repo_url: https://github.com/mhdned/FEZdoc
 repo_name: FEZdoc
 
+nav:
+  - Home: index.md
+  - Libraries:
+      - FEZrs: libraries/fezrs.md
+      - FEZcc: libraries/fezcc.md
+      - FEZsies: libraries/fezseis.md
+  - Licenses: licenses.md
+  - Stay in Touch: contact.md
+
 theme:
   name: material
+
   palette:
     - scheme: default
       primary: indigo
@@ -14,24 +24,34 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
+
     - scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/white-balance-sunny
         name: Switch to light mode
+
   features:
-    # - navigation.tabs
-    # - navigation.top
-    # - content.code.copy
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - content.code.copy
+    - search.highlight
+    - search.share
 
 markdown_extensions:
   - admonition
-  - codehilite
+
   - toc:
       permalink: true
+
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
   - pymdownx.superfences
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
   - search
@@ -41,3 +61,10 @@ extra_css:
 
 extra_javascript:
   - javascript/extra.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mhdned
+
+  generator: false

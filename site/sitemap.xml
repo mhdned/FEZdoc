@@ -2,14 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://mhdned.github.io/FEZdoc/</loc>
-         <lastmod>2025-05-23</lastmod>
+         <lastmod>2026-05-22</lastmod>
     </url>
     <url>
-         <loc>https://mhdned.github.io/FEZdoc/home/features/</loc>
-         <lastmod>2025-05-23</lastmod>
+         <loc>https://mhdned.github.io/FEZdoc/contact/</loc>
+         <lastmod>2026-05-22</lastmod>
     </url>
     <url>
-         <loc>https://mhdned.github.io/FEZdoc/tools/</loc>
-         <lastmod>2025-05-23</lastmod>
+         <loc>https://mhdned.github.io/FEZdoc/licenses/</loc>
+         <lastmod>2026-05-22</lastmod>
+    </url>
+    <url>
+         <loc>https://mhdned.github.io/FEZdoc/libraries/fezcc/</loc>
+         <lastmod>2026-05-22</lastmod>
+    </url>
+    <url>
+         <loc>https://mhdned.github.io/FEZdoc/libraries/fezrs/</loc>
+         <lastmod>2026-05-22</lastmod>
+    </url>
+    <url>
+         <loc>https://mhdned.github.io/FEZdoc/libraries/fezseis/</loc>
+         <lastmod>2026-05-22</lastmod>
     </url>
 </urlset>
