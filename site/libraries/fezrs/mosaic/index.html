@@ -12,31 +12,31 @@
         <meta name="author" content="mhdned">
       
       
-        <link rel="canonical" href="https://mhdned.github.io/FEZdoc/libraries/fezrs/">
+        <link rel="canonical" href="https://mhdned.github.io/FEZdoc/libraries/fezrs/mosaic/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../import-tools/">
       
       
-        <link rel="next" href="change-detection/">
+        <link rel="next" href="../pca/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Overview - FEZdoc</title>
+        <title>Mosaic - FEZdoc</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../styles/extra.css">
+      <link rel="stylesheet" href="../../../styles/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#modules" class="md-skip">
+        <a href="#1-module-introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="FEZdoc" class="md-header__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+    <a href="../../.." title="FEZdoc" class="md-header__button md-logo" aria-label="FEZdoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Mosaic
             
           </span>
         </div>
@@ -232,7 +232,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -264,7 +264,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -285,7 +285,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../licenses/" class="md-tabs__link">
+      <a href="../../../licenses/" class="md-tabs__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../contact/" class="md-tabs__link">
+      <a href="../../../contact/" class="md-tabs__link">
         
   
   
@@ -339,7 +339,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="FEZdoc" class="md-nav__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+    <a href="../../.." title="FEZdoc" class="md-nav__button md-logo" aria-label="FEZdoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -369,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -507,37 +507,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -553,48 +526,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#module-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Module Table
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -607,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="change-detection/" class="md-nav__link">
+      <a href="../change-detection/" class="md-nav__link">
         
   
   
@@ -635,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="clustering/" class="md-nav__link">
+      <a href="../clustering/" class="md-nav__link">
         
   
   
@@ -663,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="filters/" class="md-nav__link">
+      <a href="../filters/" class="md-nav__link">
         
   
   
@@ -691,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="glcm/" class="md-nav__link">
+      <a href="../glcm/" class="md-nav__link">
         
   
   
@@ -719,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hsv/" class="md-nav__link">
+      <a href="../hsv/" class="md-nav__link">
         
   
   
@@ -747,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="image-enhancement/" class="md-nav__link">
+      <a href="../image-enhancement/" class="md-nav__link">
         
   
   
@@ -775,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="import-tools/" class="md-nav__link">
+      <a href="../import-tools/" class="md-nav__link">
         
   
   
@@ -800,10 +731,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="mosaic/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mosaic
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -819,6 +775,96 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-module-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Module Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-mosaiccalculator-image-mosaicking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. MosaicCalculator – Image Mosaicking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. MosaicCalculator – Image Mosaicking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-scientific-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Scientific Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-full-explanation-of-the-mosaicking-algorithm-and-coordinate-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Full Explanation of the Mosaicking Algorithm and Coordinate Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-technical-notes-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Technical Notes and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-suggestions-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Suggestions for Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -831,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pca/" class="md-nav__link">
+      <a href="../pca/" class="md-nav__link">
         
   
   
@@ -859,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spectral-indices/" class="md-nav__link">
+      <a href="../spectral-indices/" class="md-nav__link">
         
   
   
@@ -887,7 +933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spectral-profile/" class="md-nav__link">
+      <a href="../spectral-profile/" class="md-nav__link">
         
   
   
@@ -915,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="svm/" class="md-nav__link">
+      <a href="../svm/" class="md-nav__link">
         
   
   
@@ -951,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fezcc/" class="md-nav__link">
+      <a href="../../fezcc/" class="md-nav__link">
         
   
   
@@ -979,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fezseis/" class="md-nav__link">
+      <a href="../../fezseis/" class="md-nav__link">
         
   
   
@@ -1014,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../licenses/" class="md-nav__link">
+      <a href="../../../licenses/" class="md-nav__link">
         
   
   
@@ -1041,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contact/" class="md-nav__link">
+      <a href="../../../contact/" class="md-nav__link">
         
   
   
@@ -1078,8 +1124,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1088,10 +1132,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#1-module-introduction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        1. Module Introduction
       
     </span>
   </a>
@@ -1099,10 +1143,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#module-table" class="md-nav__link">
+  <a href="#2-mosaiccalculator-image-mosaicking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Module Table
+        2. MosaicCalculator – Image Mosaicking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. MosaicCalculator – Image Mosaicking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-scientific-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Scientific Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-full-explanation-of-the-mosaicking-algorithm-and-coordinate-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Full Explanation of the Mosaicking Algorithm and Coordinate Transformations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-technical-notes-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Technical Notes and Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-suggestions-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Suggestions for Development
       
     </span>
   </a>
@@ -1129,240 +1223,210 @@
   
 
 
-<h1 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h1>
-<h2 id="overview"><strong>Overview</strong><a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>FEZrs embraces the <strong>"simple yet powerful"</strong> design principle.</p>
-<p>Most tools in this library share a <strong>unified structure</strong> and can be used in a similar way — this makes learning and using FEZrs extremely easy and intuitive.</p>
-<blockquote>
-<p>Unless noted otherwise, nearly <strong>all modules can be used as shown in the <a href="docs/getting-started.md">Usage</a> section</strong>.</p>
-</blockquote>
-<p>These modules serve as <strong>core calculators</strong> for the main tool categories like:</p>
-<ul>
-<li><code>change_detection</code></li>
-<li><code>clustering</code></li>
-<li><code>filters</code></li>
-<li><code>glcm</code></li>
-<li><code>hsv</code></li>
-<li><code>image_enhancement</code></li>
-<li><code>import_tools</code></li>
-<li><code>mosaic</code></li>
-<li><code>pca</code></li>
-<li><code>spectral_indices</code></li>
-<li><code>spectral_profile</code></li>
-<li><code>svm</code></li>
-</ul>
-<p>Each module is accessible directly and can be plugged into custom workflows or pipelines built on <code>BaseTool</code>.</p>
-<hr />
-<h2 id="module-table">Module Table<a class="headerlink" href="#module-table" title="Permanent link">&para;</a></h2>
+  <h1>Mosaic</h1>
+
+<h3 id="1-module-introduction">1. Module Introduction<a class="headerlink" href="#1-module-introduction" title="Permanent link">&para;</a></h3>
+<p>This module provides the ability to <strong>merge multiple satellite images</strong> (with georeferencing) into a single image in a unified coordinate system. The output is a single GeoTIFF file that can serve as input for any other FEZrs tool, enabling seamless regional or large‑area analyses.</p>
+<p><strong>Existing Classes :</strong></p>
 <table>
 <thead>
 <tr>
-<th>Module</th>
-<th>Input Bands</th>
-<th>Parameters</th>
-<th>Description</th>
-<th>Tool Category</th>
+<th>Class Name</th>
+<th>Application</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>KMeansCalculator</td>
-<td>1–N</td>
-<td><code>n_clusters</code>, <code>init</code>, <code>max_iter</code></td>
-<td>Applies K-Means clustering</td>
-<td>Clustering</td>
-</tr>
-<tr>
-<td>GuassianCalculator</td>
-<td>1</td>
-<td><code>kernel_size</code>, <code>sigma</code></td>
-<td>Gaussian blur filter</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>LaplacianCalculator</td>
-<td>1</td>
-<td><code>ksize</code></td>
-<td>Edge detection via Laplacian operator</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>MeanCalculator</td>
-<td>1</td>
-<td><code>kernel_size</code></td>
-<td>Mean (box) filter</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>MedianCalculator</td>
-<td>1</td>
-<td><code>kernel_size</code></td>
-<td>Median noise reduction</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>SobelCalculator</td>
-<td>1</td>
-<td><code>dx</code>, <code>dy</code>, <code>ksize</code></td>
-<td>Sobel edge detector</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>GLCMCalculator</td>
-<td>1</td>
-<td><code>distances</code>, <code>angles</code>, <code>properties</code></td>
-<td>Texture extraction (GLCM)</td>
-<td>GLCM</td>
-</tr>
-<tr>
-<td>HSVCalculator</td>
-<td>RGB</td>
-<td>—</td>
-<td>Converts RGB to HSV</td>
-<td>HSV</td>
-</tr>
-<tr>
-<td>IRHSVCalculator</td>
-<td>IR, R, G</td>
-<td>—</td>
-<td>Alternative HSV calc with IR</td>
-<td>HSV</td>
-</tr>
-<tr>
-<td>AdaptiveCalculator</td>
-<td>1</td>
-<td><code>clip_limit</code>, <code>tile_grid_size</code></td>
-<td>Adaptive histogram equalization</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>AdaptiveRGBCalculator</td>
-<td>RGB</td>
-<td>same as above</td>
-<td>Adaptive hist. for RGB images</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>EqualizeCalculator</td>
-<td>1</td>
-<td>—</td>
-<td>Global histogram equalization</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>EqualizeRGBCalculator</td>
-<td>RGB</td>
-<td>—</td>
-<td>Equalization for RGB</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>FloatCalculator</td>
-<td>1</td>
-<td>—</td>
-<td>Converts bands to float32</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>GammaCalculator</td>
-<td>1</td>
-<td><code>gamma</code></td>
-<td>Gamma correction</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>GammaRGBCalculator</td>
-<td>RGB</td>
-<td><code>gamma</code></td>
-<td>Gamma correction for RGB</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>LogAdjustCalculator</td>
-<td>1</td>
-<td><code>gain</code></td>
-<td>Logarithmic brightness adjust</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>OriginalCalculator</td>
-<td>1</td>
-<td>—</td>
-<td>Returns unmodified input</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>OriginalRGBCalculator</td>
-<td>RGB</td>
-<td>—</td>
-<td>Returns RGB input unchanged</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>SigmoidAdjustCalculator</td>
-<td>1</td>
-<td><code>gain</code>, <code>cutoff</code></td>
-<td>Sigmoid contrast adjustment</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>PCACalculator</td>
-<td>N</td>
-<td><code>n_components</code></td>
-<td>Principal Component Analysis</td>
-<td>PCA</td>
-</tr>
-<tr>
-<td>AFVICalculator</td>
-<td>NIR, Red, Blue</td>
-<td>—</td>
-<td>Calculates AFVI index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>BICalculator</td>
-<td>SWIR1, SWIR2</td>
-<td>—</td>
-<td>Brightness Index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>NDVICalculator</td>
-<td>NIR, Red</td>
-<td>—</td>
-<td>NDVI vegetation index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>NDWICalculator</td>
-<td>Green, NIR</td>
-<td>—</td>
-<td>NDWI water index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>SAVICalculator</td>
-<td>NIR, Red</td>
-<td><code>L</code></td>
-<td>Soil Adjusted Vegetation Index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>UICalculator</td>
-<td>Blue, Red</td>
-<td>—</td>
-<td>Urban Index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>SpectralProfileCalculator</td>
-<td>N</td>
-<td><code>pixels</code>, <code>wavelengths</code></td>
-<td>Extracts spectral signature</td>
-<td>Spectral Profile</td>
+<td><code>MosaicCalculator</code></td>
+<td>Merges multiple GeoTIFF images (that share the same CRS) into a single mosaicked raster.</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Important note regarding <code>__init__.py</code>:</strong> </p>
+<p>The current <code>__init__.py</code> exports <code>BaseTool</code> by mistake. For the module to work correctly, it must be changed to:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">.mosaic_calculator</span><span class="w"> </span><span class="kn">import</span> <span class="n">MosaicCalculator</span>
+</code></pre></div></p>
+<hr />
+<h3 id="2-mosaiccalculator-image-mosaicking">2. <code>MosaicCalculator</code> – Image Mosaicking<a class="headerlink" href="#2-mosaiccalculator-image-mosaicking" title="Permanent link">&para;</a></h3>
+<h4 id="21-scientific-objective">2.1 Scientific Objective<a class="headerlink" href="#21-scientific-objective" title="Permanent link">&para;</a></h4>
+<p>Create a continuous, seamless image from several separate scenes that together cover a larger geographic area. This process is essential for regional analyses, the production of wall‑to‑wall maps, and the removal of artificial boundaries between adjacent satellite swaths.</p>
+<h4 id="22-full-explanation-of-the-mosaicking-algorithm-and-coordinate-transformations">2.2 Full Explanation of the Mosaicking Algorithm and Coordinate Transformations<a class="headerlink" href="#22-full-explanation-of-the-mosaicking-algorithm-and-coordinate-transformations" title="Permanent link">&para;</a></h4>
+<p>Mosaicking in the geospatial domain is more than just pasting images side by side; it requires precise alignment of every pixel to a common coordinate reference system (CRS) and a unified pixel grid. The <code>MosaicCalculator</code> uses <code>rasterio.merge.merge</code> to perform this task. The underlying mathematics are detailed below.</p>
+<p><strong>1. Affine georeferencing of each input image</strong></p>
+<p>Each input GeoTIFF is accompanied by an <strong>affine transformation matrix</strong> that maps pixel coordinates (row $r$, column $c$) to real‑world coordinates (e.g., UTM easting $x$, northing $y$) :</p>
+<p>$$\begin{bmatrix}
+x \
+y \
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+a &amp; b &amp; c \
+d &amp; e &amp; f \
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}
+c \
+r \
+1
+\end{bmatrix}$$</p>
+<p>where :</p>
+<ul>
+<li>
+<p>$a$ = pixel width (size in $x$ direction),</p>
+</li>
+<li>
+<p>$e$ = pixel height (usually negative for north‑up images, so e&lt;0e&lt;0),</p>
+</li>
+<li>
+<p>$b,d$ = rotation/shear terms (zero for north‑up images),</p>
+</li>
+<li>
+<p>$c$ = $x$ coordinate of the centre of the upper‑left pixel,</p>
+</li>
+<li>
+<p>$f$ = $y$ coordinate of the centre of the upper‑left pixel.</p>
+</li>
+</ul>
+<p>For every pixel, this affine allows computing its exact geographic footprint.</p>
+<p><strong>2. Determination of the output extent and pixel grid</strong></p>
+<p>When multiple images are merged, the output must cover the <strong>union</strong> of all input extents. For each input image $I_k$​ with bounding box ($x_{\min}^k, \; y_{\min}^k, \; x_{\max}^k, \; y_{\max}^k$​), the output bounding box is :</p>
+<p>$$x_{\text{min}}^{\text{out}} = \min_k(x_{\text{min}}^k), \quad y_{\text{min}}^{\text{out}} = \min_k(y_{\text{min}}^k)$$
+$$x_{max}^{out} = \max_k(x_{max}^k), \quad y_{max}^{out} = \max_k(y_{max}^k)$$
+The output pixel resolution is normally taken from the first image in the list (the <code>merge</code> function retains the georeferencing parameters of the first dataset by default). The output affine transform is then constructed such that :</p>
+<p>$$a^{\text{out}} = a^1, \quad e^{\text{out}} = e^1, \quad b^{\text{out}} = b^1, \quad d^{\text{out}} = d^1$$
+$$c^{\text{out}} = x_{min}^{\text{out}} + \frac{a_{\text{out}}^{\text{out}}}{2}, \quad f^{\text{out}} = y_{max}^{\text{out}} - \frac{|e_{\text{out}}^{\text{out}}|}{2}$$
+(assuming $e$ is negative; the exact corner handling follows GDAL conventions). The output raster dimensions (width WoutWout, height HoutHout) are then :</p>
+<p>$$W^{out} = \left| \frac{x_{max}^{out} - x_{min}^{out}}{a_{out}} \right|, \quad H^{out} = \left| \frac{y_{max}^{out} - y_{min}^{out}}{e_{out}} \right|$$</p>
+<p><strong>3. Placing input pixels onto the output grid</strong></p>
+<p>For each input image, <code>rasterio.merge</code> computes, for every output pixel ($c^{out},r^{out}$), its corresponding geographic coordinates using the output affine, then applies the <strong>inverse affine</strong> of the input image to find the source pixel coordinates :</p>
+<p>$$\begin{bmatrix}
+c_{in} \
+r_{in}
+\end{bmatrix}
+= \text{Affine}<em>{in}^{-1}
+\left( \text{Affine}</em>{out}
+\begin{bmatrix}
+c_{out} \
+r_{out} \
+1
+\end{bmatrix} \right)
+$$</p>
+<p>If the computed source coordinates fall within the valid extent of the input image, the pixel value is read (with nearest‑neighbour interpolation by default, unless a resampling method is specified) and written to the output.</p>
+<p><strong>4. Handling overlapping areas</strong></p>
+<p>In regions where two or more input images overlap, a decision rule must be applied. The code calls <code>merge</code> <strong>without</strong> a <code>method</code> argument, which means the default behaviour is <strong>“first”</strong>: the pixel value from the first dataset in the list that covers that location is used. Subsequent overlapping pixels are ignored.</p>
+<p>Formally, the algorithm iterates over the input images in the given order; for each output pixel location, the first image that has a valid (non‑nodata) pixel at that position supplies the value. This is equivalent to :</p>
+<p>$$output(x, y) = I_{k^<em>}(x, y) \quad \text{where } k^</em> = \min{k \mid I_k \text{ is valid at } (x, y)}$$</p>
+<p>Alternative merging methods (e.g., taking the minimum, maximum, mean, or a colour‑balancing blend) can be enabled by passing the <code>method</code> parameter to <code>merge</code>. Future versions of FEZrs could expose this choice.</p>
+<p><strong>5. Metadata finalization</strong></p>
+<p>After the pixel arrays are assembled, the metadata dictionary is updated with :</p>
+<ul>
+<li>
+<p><code>driver</code> : <code>"GTiff"</code> (GeoTIFF),</p>
+</li>
+<li>
+<p><code>height</code> and <code>width</code> : computed as above,</p>
+</li>
+<li>
+<p><code>transform</code> : the new output affine matrix,</p>
+</li>
+<li>
+<p><code>crs</code> : taken from the first input image (all inputs <em>must</em> share this CRS; otherwise <code>merge</code> reprojects on‑the‑fly, which may introduce undesired resampling).</p>
+</li>
+</ul>
+<p>The resulting <code>mimg</code> array has shape <code>(bands, H, W)</code>, and the metadata allows direct writing to a new GeoTIFF file with full georeferencing.</p>
+<p><strong>Input parameters (<code>__init__</code>) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tif_paths</code></td>
+<td><code>List[str or Path]</code></td>
+<td>A list of paths to the GeoTIFF files to be mosaicked. All images <strong>must</strong> be in the same coordinate reference system to avoid reprojection.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>process</code> method :</strong></p>
+<ul>
+<li>
+<p>Uses <code>rasterio.merge.merge</code> to combine the images.</p>
+</li>
+<li>
+<p>Extracts and updates the metadata (<code>transform</code>, <code>width</code>, <code>height</code>, <code>crs</code>) from the first input image.</p>
+</li>
+<li>
+<p>Stores the merged array in <code>self.mosaic_mimg</code> and the metadata in <code>self.mosaic_meta</code>.</p>
+</li>
+</ul>
+<p><strong><code>_export_file</code> method (custom override) :</strong><br />
+Unlike other tools that only save a PNG, this method :</p>
+<ul>
+<li>
+<p>Writes a complete <strong>GeoTIFF</strong> file with full georeferencing to the output directory.</p>
+</li>
+<li>
+<p>Generates a <strong>PNG</strong> preview for quick visual inspection.</p>
+</li>
+<li>
+<p>Names the files automatically using the prefix <code>Mosaic_</code> and a unique identifier (UUID).</p>
+</li>
+</ul>
+<p><strong>Return value (<code>execute</code>) :</strong></p>
+<ul>
+<li>The path of the saved GeoTIFF file is stored in <code>self._output</code>, enabling chained processing.</li>
+</ul>
+<p><strong>Usage example :</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fezrs.tools.mosaic</span><span class="w"> </span><span class="kn">import</span> <span class="n">MosaicCalculator</span>
+
+<span class="n">tiles</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;path/to/tile_01.tif&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path/to/tile_02.tif&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;path/to/tile_03.tif&quot;</span>
+<span class="p">]</span>
+
+<span class="n">calc</span> <span class="o">=</span> <span class="n">MosaicCalculator</span><span class="p">(</span><span class="n">tif_paths</span><span class="o">=</span><span class="n">tiles</span><span class="p">)</span>
+<span class="n">result_tif</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;./mosaic_output/&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mosaic saved at: </span><span class="si">{</span><span class="n">result_tif</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h3 id="3-technical-notes-and-requirements">3. Technical Notes and Requirements<a class="headerlink" href="#3-technical-notes-and-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Consistent CRS :</strong> All input images must have the same projection. If they differ, <code>rasterio.merge</code> will automatically reproject them to the CRS of the first image, which may lead to spatial shifts or interpolation artefacts. It is strongly recommended to pre‑process the images with <code>rio warp</code> to a common CRS and resolution before mosaicking.</p>
+</li>
+<li>
+<p><strong>Overlap handling :</strong> In overlapping areas the pixel from the image appearing first in the list is kept (the <code>"first"</code> method). For more sophisticated blending (e.g., feathering, averaging), the <code>method</code> parameter of <code>merge</code> must be explicitly set.</p>
+</li>
+<li>
+<p><strong>Memory consumption :</strong> The entire mosaic is held in memory as a NumPy array (<code>self.mosaic_mimg</code>). For very large regions (e.g., country‑scale at high resolution), this can exceed available RAM. In such cases, windowed or tiled processing with <code>rasterio</code> would be needed.</p>
+</li>
+<li>
+<p><strong>No direct visualisation :</strong> The <code>execute</code> method does not display the image interactively; it only writes files. This avoids loading large rasters into the graphics backend and ensures server compatibility.</p>
+</li>
+<li>
+<p><strong>Dependency :</strong> This module requires the <code>rasterio</code> library, which is standard in most remote sensing Python environments.</p>
+</li>
+</ul>
+<hr />
+<h3 id="4-suggestions-for-development">4. Suggestions for Development<a class="headerlink" href="#4-suggestions-for-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Exposed <code>method</code> parameter :</strong> Add an optional <code>method</code> argument to the calculator (e.g., <code>"first"</code>, <code>"last"</code>, <code>"min"</code>, <code>"max"</code>, <code>"mean"</code>, <code>"sum"</code>) to control how overlapping regions are combined.</p>
+</li>
+<li>
+<p><strong>COG (Cloud Optimized GeoTIFF) support :</strong> While COG files can be read, the current implementation does not exploit their ability to read only partial regions. Future versions could implement lazy mosaicking for massive datasets.</p>
+</li>
+<li>
+<p><strong>Fix the <code>__init__.py</code> bug :</strong> Correct the import statement to export <code>MosaicCalculator</code> instead of <code>BaseTool</code>.</p>
+</li>
+</ul>
 
 
 
@@ -1429,12 +1493,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../javascript/extra.js"></script>
+        <script src="../../../javascript/extra.js"></script>
       
     
   </body>

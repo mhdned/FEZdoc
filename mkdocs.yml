@@ -8,7 +8,20 @@ repo_name: FEZdoc
 nav:
   - Home: index.md
   - Libraries:
-      - FEZrs: libraries/fezrs.md
+      - FEZrs:
+          - Overview: libraries/fezrs/index.md
+          - Change Detection: libraries/fezrs/change-detection.md
+          - Clustering: libraries/fezrs/clustering.md
+          - Filters: libraries/fezrs/filters.md
+          - GLCM: libraries/fezrs/glcm.md
+          - HSV: libraries/fezrs/hsv.md
+          - Image Enhancement: libraries/fezrs/image-enhancement.md
+          - Import Tools: libraries/fezrs/import-tools.md
+          - Mosaic: libraries/fezrs/mosaic.md
+          - PCA: libraries/fezrs/pca.md
+          - Spectral Indices: libraries/fezrs/spectral-indices.md
+          - Spectral Profile: libraries/fezrs/spectral-profile.md
+          - SVM: libraries/fezrs/svm.md
       - FEZcc: libraries/fezcc.md
       - FEZsies: libraries/fezseis.md
   - Licenses: licenses.md

@@ -12,31 +12,31 @@
         <meta name="author" content="mhdned">
       
       
-        <link rel="canonical" href="https://mhdned.github.io/FEZdoc/libraries/fezrs/">
+        <link rel="canonical" href="https://mhdned.github.io/FEZdoc/libraries/fezrs/pca/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../mosaic/">
       
       
-        <link rel="next" href="change-detection/">
+        <link rel="next" href="../spectral-indices/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Overview - FEZdoc</title>
+        <title>PCA - FEZdoc</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../styles/extra.css">
+      <link rel="stylesheet" href="../../../styles/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#modules" class="md-skip">
+        <a href="#1-module-introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="FEZdoc" class="md-header__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+    <a href="../../.." title="FEZdoc" class="md-header__button md-logo" aria-label="FEZdoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              PCA
             
           </span>
         </div>
@@ -232,7 +232,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -264,7 +264,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -285,7 +285,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../licenses/" class="md-tabs__link">
+      <a href="../../../licenses/" class="md-tabs__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../contact/" class="md-tabs__link">
+      <a href="../../../contact/" class="md-tabs__link">
         
   
   
@@ -339,7 +339,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="FEZdoc" class="md-nav__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+    <a href="../../.." title="FEZdoc" class="md-nav__button md-logo" aria-label="FEZdoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -369,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -507,37 +507,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -553,48 +526,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#module-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Module Table
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -607,7 +538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="change-detection/" class="md-nav__link">
+      <a href="../change-detection/" class="md-nav__link">
         
   
   
@@ -635,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="clustering/" class="md-nav__link">
+      <a href="../clustering/" class="md-nav__link">
         
   
   
@@ -663,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="filters/" class="md-nav__link">
+      <a href="../filters/" class="md-nav__link">
         
   
   
@@ -691,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="glcm/" class="md-nav__link">
+      <a href="../glcm/" class="md-nav__link">
         
   
   
@@ -719,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="hsv/" class="md-nav__link">
+      <a href="../hsv/" class="md-nav__link">
         
   
   
@@ -747,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="image-enhancement/" class="md-nav__link">
+      <a href="../image-enhancement/" class="md-nav__link">
         
   
   
@@ -775,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="import-tools/" class="md-nav__link">
+      <a href="../import-tools/" class="md-nav__link">
         
   
   
@@ -803,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mosaic/" class="md-nav__link">
+      <a href="../mosaic/" class="md-nav__link">
         
   
   
@@ -828,10 +759,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="pca/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCA
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -847,6 +803,96 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-module-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Module Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pcacalculator-principal-component-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PCACalculator – Principal Component Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PCACalculator – Principal Component Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-scientific-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Scientific Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-full-explanation-of-the-pca-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Full Explanation of the PCA Mathematics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-technical-notes-and-interpretation-of-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Technical Notes and Interpretation of Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-suggestions-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Suggestions for Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -859,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spectral-indices/" class="md-nav__link">
+      <a href="../spectral-indices/" class="md-nav__link">
         
   
   
@@ -887,7 +933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="spectral-profile/" class="md-nav__link">
+      <a href="../spectral-profile/" class="md-nav__link">
         
   
   
@@ -915,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="svm/" class="md-nav__link">
+      <a href="../svm/" class="md-nav__link">
         
   
   
@@ -951,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fezcc/" class="md-nav__link">
+      <a href="../../fezcc/" class="md-nav__link">
         
   
   
@@ -979,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fezseis/" class="md-nav__link">
+      <a href="../../fezseis/" class="md-nav__link">
         
   
   
@@ -1014,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../licenses/" class="md-nav__link">
+      <a href="../../../licenses/" class="md-nav__link">
         
   
   
@@ -1041,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../contact/" class="md-nav__link">
+      <a href="../../../contact/" class="md-nav__link">
         
   
   
@@ -1078,8 +1124,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1088,10 +1132,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#1-module-introduction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        1. Module Introduction
       
     </span>
   </a>
@@ -1099,10 +1143,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#module-table" class="md-nav__link">
+  <a href="#2-pcacalculator-principal-component-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Module Table
+        2. PCACalculator – Principal Component Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PCACalculator – Principal Component Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-scientific-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Scientific Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-full-explanation-of-the-pca-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Full Explanation of the PCA Mathematics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-technical-notes-and-interpretation-of-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Technical Notes and Interpretation of Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-suggestions-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Suggestions for Development
       
     </span>
   </a>
@@ -1129,240 +1223,184 @@
   
 
 
-<h1 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h1>
-<h2 id="overview"><strong>Overview</strong><a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>FEZrs embraces the <strong>"simple yet powerful"</strong> design principle.</p>
-<p>Most tools in this library share a <strong>unified structure</strong> and can be used in a similar way — this makes learning and using FEZrs extremely easy and intuitive.</p>
-<blockquote>
-<p>Unless noted otherwise, nearly <strong>all modules can be used as shown in the <a href="docs/getting-started.md">Usage</a> section</strong>.</p>
-</blockquote>
-<p>These modules serve as <strong>core calculators</strong> for the main tool categories like:</p>
-<ul>
-<li><code>change_detection</code></li>
-<li><code>clustering</code></li>
-<li><code>filters</code></li>
-<li><code>glcm</code></li>
-<li><code>hsv</code></li>
-<li><code>image_enhancement</code></li>
-<li><code>import_tools</code></li>
-<li><code>mosaic</code></li>
-<li><code>pca</code></li>
-<li><code>spectral_indices</code></li>
-<li><code>spectral_profile</code></li>
-<li><code>svm</code></li>
-</ul>
-<p>Each module is accessible directly and can be plugged into custom workflows or pipelines built on <code>BaseTool</code>.</p>
-<hr />
-<h2 id="module-table">Module Table<a class="headerlink" href="#module-table" title="Permanent link">&para;</a></h2>
+  <h1>PCA</h1>
+
+<h3 id="1-module-introduction">1. Module Introduction<a class="headerlink" href="#1-module-introduction" title="Permanent link">&para;</a></h3>
+<p>This module provides the <strong>Principal Component Analysis (PCA)</strong> algorithm for dimensionality reduction and spectral‑spatial information compression of multi‑band images. In the current implementation, six input bands are transformed into six principal components that explain the variance <strong>across the band dimension</strong>, revealing dominant spatial patterns.</p>
+<p><strong>Existing Classes :</strong></p>
 <table>
 <thead>
 <tr>
-<th>Module</th>
-<th>Input Bands</th>
-<th>Parameters</th>
-<th>Description</th>
-<th>Tool Category</th>
+<th>Class Name</th>
+<th>Application</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>KMeansCalculator</td>
-<td>1–N</td>
-<td><code>n_clusters</code>, <code>init</code>, <code>max_iter</code></td>
-<td>Applies K-Means clustering</td>
-<td>Clustering</td>
-</tr>
-<tr>
-<td>GuassianCalculator</td>
-<td>1</td>
-<td><code>kernel_size</code>, <code>sigma</code></td>
-<td>Gaussian blur filter</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>LaplacianCalculator</td>
-<td>1</td>
-<td><code>ksize</code></td>
-<td>Edge detection via Laplacian operator</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>MeanCalculator</td>
-<td>1</td>
-<td><code>kernel_size</code></td>
-<td>Mean (box) filter</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>MedianCalculator</td>
-<td>1</td>
-<td><code>kernel_size</code></td>
-<td>Median noise reduction</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>SobelCalculator</td>
-<td>1</td>
-<td><code>dx</code>, <code>dy</code>, <code>ksize</code></td>
-<td>Sobel edge detector</td>
-<td>Filters</td>
-</tr>
-<tr>
-<td>GLCMCalculator</td>
-<td>1</td>
-<td><code>distances</code>, <code>angles</code>, <code>properties</code></td>
-<td>Texture extraction (GLCM)</td>
-<td>GLCM</td>
-</tr>
-<tr>
-<td>HSVCalculator</td>
-<td>RGB</td>
-<td>—</td>
-<td>Converts RGB to HSV</td>
-<td>HSV</td>
-</tr>
-<tr>
-<td>IRHSVCalculator</td>
-<td>IR, R, G</td>
-<td>—</td>
-<td>Alternative HSV calc with IR</td>
-<td>HSV</td>
-</tr>
-<tr>
-<td>AdaptiveCalculator</td>
-<td>1</td>
-<td><code>clip_limit</code>, <code>tile_grid_size</code></td>
-<td>Adaptive histogram equalization</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>AdaptiveRGBCalculator</td>
-<td>RGB</td>
-<td>same as above</td>
-<td>Adaptive hist. for RGB images</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>EqualizeCalculator</td>
-<td>1</td>
-<td>—</td>
-<td>Global histogram equalization</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>EqualizeRGBCalculator</td>
-<td>RGB</td>
-<td>—</td>
-<td>Equalization for RGB</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>FloatCalculator</td>
-<td>1</td>
-<td>—</td>
-<td>Converts bands to float32</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>GammaCalculator</td>
-<td>1</td>
-<td><code>gamma</code></td>
-<td>Gamma correction</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>GammaRGBCalculator</td>
-<td>RGB</td>
-<td><code>gamma</code></td>
-<td>Gamma correction for RGB</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>LogAdjustCalculator</td>
-<td>1</td>
-<td><code>gain</code></td>
-<td>Logarithmic brightness adjust</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>OriginalCalculator</td>
-<td>1</td>
-<td>—</td>
-<td>Returns unmodified input</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>OriginalRGBCalculator</td>
-<td>RGB</td>
-<td>—</td>
-<td>Returns RGB input unchanged</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>SigmoidAdjustCalculator</td>
-<td>1</td>
-<td><code>gain</code>, <code>cutoff</code></td>
-<td>Sigmoid contrast adjustment</td>
-<td>Image Enhancement</td>
-</tr>
-<tr>
-<td>PCACalculator</td>
-<td>N</td>
-<td><code>n_components</code></td>
-<td>Principal Component Analysis</td>
-<td>PCA</td>
-</tr>
-<tr>
-<td>AFVICalculator</td>
-<td>NIR, Red, Blue</td>
-<td>—</td>
-<td>Calculates AFVI index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>BICalculator</td>
-<td>SWIR1, SWIR2</td>
-<td>—</td>
-<td>Brightness Index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>NDVICalculator</td>
-<td>NIR, Red</td>
-<td>—</td>
-<td>NDVI vegetation index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>NDWICalculator</td>
-<td>Green, NIR</td>
-<td>—</td>
-<td>NDWI water index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>SAVICalculator</td>
-<td>NIR, Red</td>
-<td><code>L</code></td>
-<td>Soil Adjusted Vegetation Index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>UICalculator</td>
-<td>Blue, Red</td>
-<td>—</td>
-<td>Urban Index</td>
-<td>Spectral Indices</td>
-</tr>
-<tr>
-<td>SpectralProfileCalculator</td>
-<td>N</td>
-<td><code>pixels</code>, <code>wavelengths</code></td>
-<td>Extracts spectral signature</td>
-<td>Spectral Profile</td>
+<td><code>PCACalculator</code></td>
+<td>Computes 6 spatial principal components from 6 bands and displays them as maps with histograms.</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h3 id="2-pcacalculator-principal-component-analysis">2. <code>PCACalculator</code> – Principal Component Analysis<a class="headerlink" href="#2-pcacalculator-principal-component-analysis" title="Permanent link">&para;</a></h3>
+<h4 id="21-scientific-objective">2.1 Scientific Objective<a class="headerlink" href="#21-scientific-objective" title="Permanent link">&para;</a></h4>
+<p>Transform the six original spectral bands (Red, Green, Blue, NIR, SWIR1, SWIR2) into six new <strong>principal component</strong> images that are uncorrelated with each other and are ordered by the amount of total variance they explain. The resulting components can be used for data compression, noise reduction, and the extraction of meaningful spatial structures.</p>
+<h4 id="22-full-explanation-of-the-pca-mathematics">2.2 Full Explanation of the PCA Mathematics<a class="headerlink" href="#22-full-explanation-of-the-pca-mathematics" title="Permanent link">&para;</a></h4>
+<p>PCA is a classic multivariate statistical technique. The implementation in this class applies PCA to a data matrix where <strong>rows represent the six bands</strong> and <strong>columns represent the pixels</strong> (i.e., each pixel is treated as a variable). This is a <strong>transposed (spatial) PCA</strong> – it identifies the dominant spatial patterns that account for the most variability across the set of input bands, rather than the more common spectral PCA that operates on pixel vectors.</p>
+<p><strong>Data matrix construction</strong></p>
+<p>Let each band $b$ (with $b=1,…,6$) be a 2D image of height $H$ and width $W$, flattened into a row vector of length $N=H×W$. The full data matrix $X$ is then</p>
+<p>$$
+X =
+\begin{bmatrix}
+\text{band}_1 \
+\text{band}_2 \
+\vdots \
+\text{band}_6
+\end{bmatrix} \in \mathbb{R}^{6 \times N}.
+$$</p>
+<p>Thus, for this analysis, we have $m=6$ <strong>samples</strong> (the spectral bands) and $n=N$ <strong>features</strong> (the pixels).</p>
+<p><strong>Centering the data</strong></p>
+<p>Prior to decomposition, PCA subtracts the mean of each feature (pixel) across the six samples. Let $\bar{x}<em>j = \frac{1}{m} \sum</em>{i=1}^{m} X_{ij}$​ be the mean of pixel $j$. The centered matrix $X_c$​ is</p>
+<p>$$X_c = X - \begin{bmatrix} \bar{x}<em>1 &amp; \bar{x}_2 &amp; \dots &amp; \bar{x}_N \end{bmatrix}</em>{1 \times N} \quad (\text{broadcast over rows})$$</p>
+<p><strong>Covariance matrix and its decomposition</strong></p>
+<p>The covariance matrix of the features (pixels) is</p>
+<p>$$C = \frac{1}{m-1} X_c^T X_c \quad \in \mathbb{R}^{N \times N}$$</p>
+<p>Because $N$ (the number of pixels) is typically enormous, directly building and decomposing $C$ is computationally prohibitive. Instead, a <strong>singular value decomposition (SVD)</strong> of the centered matrix $X_c$​ is used :</p>
+<p>$$X_c = U \Sigma V^T,$$</p>
+<p>where</p>
+<ul>
+<li>$U \in \mathbb{R}^{6 \times 6}$ is orthogonal and contains the left singular vectors,</li>
+<li>$\Sigma \in \mathbb{R}^{6 \times 6}$ is diagonal with singular values $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_6 \geq 0$,</li>
+<li>$V \in \mathbb{R}^{N \times 6}$ contains the right singular vectors.</li>
+</ul>
+<p>The principal components are the <strong>right singular vectors</strong> $V$; the rows of $V^T$ (or equivalently the columns of $V$) are the eigenvectors of the $N×N$ covariance matrix. The diagonal elements of $Σ$ are related to the eigenvalues $λ_k$​ of the covariance matrix by $\lambda_k = \frac{\sigma_k^2}{m-1}$​​.</p>
+<p><strong>Principal components and explained variance</strong></p>
+<p>The $k-th$ principal component vector (as stored in <code>pca.components_</code>) is the $k-th$ row of $V^T$ (a vector of length $N$). Its corresponding eigenvalue $λ_k$​ measures the amount of variance captured by that component. The fraction of total variance explained by component $k$ is</p>
+<p>$$VE_k = \frac{\lambda_k}{\sum_{j=1}^6 \lambda_j} = \frac{\sigma_k^2}{\sum_{j=1}^6 \sigma_j^2}$$</p>
+<p>Because the singular values are sorted in descending order, PC1 explains the largest portion of variance, PC2 the second largest, and so on.</p>
+<p><strong>Spatial interpretation</strong></p>
+<p>When each principal component vector of length $N$ is reshaped back to $(H,W)$, we obtain a <strong>spatial map</strong> (an image). These images have the following properties :</p>
+<ul>
+<li><strong>PC1</strong> captures the most dominant spatial pattern that is common to (or varies most across) the six input bands. In practice, PC1 often resembles a panchromatic brightness image because all bands tend to increase or decrease together with overall illumination.</li>
+<li><strong>PC2</strong>, orthogonal to PC1, reveals the second most important pattern – often related to the contrast between vegetation (high NIR) and other surfaces.</li>
+<li><strong>PC3–PC6</strong> represent progressively finer‑scale or noise‑driven patterns. High‑order components frequently carry sensor noise and can be discarded for compression.</li>
+</ul>
+<p><strong>Transformation of original bands (not performed in this code)</strong></p>
+<p>If one wished to project the original band images onto the principal components (i.e., obtain the “scores”), one would compute</p>
+<p>$$T = X_c V \in \mathbb{R}^{6 \times 6}$$</p>
+<p>but that would give a 6×6 matrix of component strengths per band, not a pixel‑wise transformation. The present implementation focuses on the <strong>eigenimages</strong> themselves (the $V$ vectors), which directly show the spatial structures responsible for the variance.</p>
+<p><strong>The code’s specific steps</strong></p>
+<ol>
+<li>The six bands are flattened to row vectors; the 6×N matrix <code>images</code> is created.</li>
+<li><code>PCA(n_components=6)</code> fits the model, storing <code>components_</code> (shape <code>(6, N)</code> – rows = principal components).</li>
+<li><code>self._output</code> is set to <code>pca.components_[:6]</code>, which contains all six eigenimages.</li>
+<li>For visualisation, each component is reshaped to $(H,W)$ and displayed alongside its histogram.</li>
+</ol>
+<p><strong>Input parameters (<code>__init__</code>) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>red_path</code></td>
+<td><code>Path</code></td>
+<td>Path to the Red band</td>
+</tr>
+<tr>
+<td><code>green_path</code></td>
+<td><code>Path</code></td>
+<td>Path to the Green band</td>
+</tr>
+<tr>
+<td><code>blue_path</code></td>
+<td><code>Path</code></td>
+<td>Path to the Blue band</td>
+</tr>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>Path to the NIR band</td>
+</tr>
+<tr>
+<td><code>swir1_path</code></td>
+<td><code>Path</code></td>
+<td>Path to the SWIR1 band</td>
+</tr>
+<tr>
+<td><code>swir2_path</code></td>
+<td><code>Path</code></td>
+<td>Path to the SWIR2 band</td>
+</tr>
+<tr>
+<td><code>selectBand</code></td>
+<td><code>Literal["red","green","blue" ,"nir","swir1","swir2",None]</code></td>
+<td>Band for which a separate histogram is computed (optional)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processing steps :</strong></p>
+<ul>
+<li>Each band image is flattened into a 1D array.</li>
+<li>The six flattened arrays form a <code>(6, N_pixels)</code> matrix, which is passed to scikit‑learn’s PCA with <code>n_components=6</code>.</li>
+<li>The principal component vectors (each of length <code>N_pixels</code>) are stored in <code>self._output</code>.</li>
+</ul>
+<p><strong>Visual output (<code>_export_file</code>) :</strong><br />
+A composite 6×2 grid is generated :</p>
+<ul>
+<li><strong>Left column :</strong> each principal component reshaped to the original image shape.</li>
+<li><strong>Right column :</strong> the histogram of that component.<br />
+   The components are labeled PC1 to PC6.</li>
+</ul>
+<p><strong>Return value :</strong><br />
+A NumPy array of shape <code>(6, N_pixels)</code>, where each row is one principal component vector.</p>
+<p><strong>Usage example :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fezrs.tools.pca</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCACalculator</span>
+
+<span class="n">calc</span> <span class="o">=</span> <span class="n">PCACalculator</span><span class="p">(</span>
+    <span class="n">red_path</span><span class="o">=</span><span class="s2">&quot;B4.tif&quot;</span><span class="p">,</span>
+    <span class="n">green_path</span><span class="o">=</span><span class="s2">&quot;B3.tif&quot;</span><span class="p">,</span>
+    <span class="n">blue_path</span><span class="o">=</span><span class="s2">&quot;B2.tif&quot;</span><span class="p">,</span>
+    <span class="n">nir_path</span><span class="o">=</span><span class="s2">&quot;B5.tif&quot;</span><span class="p">,</span>
+    <span class="n">swir1_path</span><span class="o">=</span><span class="s2">&quot;B6.tif&quot;</span><span class="p">,</span>
+    <span class="n">swir2_path</span><span class="o">=</span><span class="s2">&quot;B7.tif&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Save the 6‑panel PDF with components and histograms</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;./pca_results/&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;PCA of 6 Landsat Bands&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># For a histogram of a single component (e.g., the one most related to SWIR2)</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">PCACalculator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">selectBand</span><span class="o">=</span><span class="s2">&quot;swir2&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">histogram_export</span><span class="p">(</span><span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;PC Component analogous to SWIR2&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3 id="3-technical-notes-and-interpretation-of-results">3. Technical Notes and Interpretation of Results<a class="headerlink" href="#3-technical-notes-and-interpretation-of-results" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Importance of PC1 :</strong> Often accounts for more than 90 % of the total variance. The PC1 image typically resembles a high‑resolution panchromatic image because brightness variations dominate the dataset.</li>
+<li><strong>PC2 and PC3 :</strong> These components contain complementary spectral information that can distinguish between vegetation, soil, and water. A colour composite using PC1, PC2, and PC3 serves as an effective alternative to a natural‑colour image for visual analysis.</li>
+<li><strong>PC4–PC6 :</strong> Primarily consist of sensor noise or very subtle variations. They are frequently omitted in data compression workflows.</li>
+<li><strong>Memory considerations :</strong> The current implementation loads all pixel data into memory at once and performs SVD on a <code>(6, N)</code> matrix, which is memory‑efficient because N is large but m=6 is tiny. However, if the image is extremely large, the flattening step may still consume significant RAM.</li>
+<li><strong>Data scaling :</strong> PCA is sensitive to the scale of the input variables. In this transposed approach, the variables are pixels, and their values are the raw or normalised reflectances. If the bands are not normalised beforehand, bands with larger dynamic ranges can dominate the first components. The code uses <code>get_images_collection()</code>, which may return raw digital numbers; applying a consistent normalisation before PCA is advisable.</li>
+<li><strong>Repeated computation in <code>histogram_export</code> :</strong> Calling this method runs <code>process()</code> again, which recomputes the entire PCA. For large images this doubles the computation time; caching the result or computing the histogram directly from <code>self._output</code> would be more efficient.</li>
+</ul>
+<hr />
+<h3 id="4-suggestions-for-development">4. Suggestions for Development<a class="headerlink" href="#4-suggestions-for-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Data standardisation :</strong> Add a <code>standardize=True</code> parameter to subtract the mean and divide by the standard deviation of each band (or each pixel in this transposed case) before PCA.</li>
+<li><strong>Save PCA model :</strong> Allow exporting the trained PCA object (the eigenvectors) for applying the same transformation to other images.</li>
+<li><strong>GeoTIFF output :</strong> Currently only PNG is saved. Adding the ability to store each principal component as a separate GeoTIFF file with georeferencing would facilitate further geospatial analysis.</li>
+<li><strong>Adjustable number of components :</strong> Introduce an <code>n_components</code> parameter to let the user extract fewer than six components, reducing output size.</li>
+</ul>
 
 
 
@@ -1429,12 +1467,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../javascript/extra.js"></script>
+        <script src="../../../javascript/extra.js"></script>
       
     
   </body>

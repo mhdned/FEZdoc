@@ -1,0 +1,1813 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Remote Sensing Python Tools">
+      
+      
+        <meta name="author" content="mhdned">
+      
+      
+        <link rel="canonical" href="https://mhdned.github.io/FEZdoc/libraries/fezrs/change-detection/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../clustering/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Change Detection - FEZdoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-module-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FEZdoc" class="md-header__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FEZdoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Change Detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3.55 19.09 1.41 1.41 1.8-1.79-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71 1.8 1.79 1.41-1.41-1.79-1.8M20.45 5l-1.41-1.4-1.8 1.79 1.42 1.42M13 1h-2v3h2M6.76 5.39 4.96 3.6 3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mhdned/FEZdoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FEZdoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Libraries
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../licenses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Licenses
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Stay in Touch
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FEZdoc" class="md-nav__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FEZdoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mhdned/FEZdoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FEZdoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Libraries
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Libraries
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEZrs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FEZrs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Detection
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-module-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Module Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-common-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Common Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-detailed-documentation-for-each-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Detailed Documentation for Each Class
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Detailed Documentation for Each Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-burncalculator-burn-severity-calculation-dnbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. BurnCalculator – Burn Severity Calculation (dNBR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-indicescalculator-compute-nbr-for-a-single-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. IndicesCalculator – Compute NBR for a Single Date
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-magdircalculator-change-vector-magnitude-and-direction-cva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. MagDirCalculator – Change Vector Magnitude and Direction (CVA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-subdivcalculator-simple-band-subtraction-or-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. SubDivCalculator – Simple Band Subtraction or Division
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-timecalculator-raw-image-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. TimeCalculator – Raw Image Extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-important-technical-notes-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Important Technical Notes for Developers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clustering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glcm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GLCM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hsv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HSV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-enhancement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Enhancement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../import-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mosaic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mosaic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral-indices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spectral Indices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spectral Profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../svm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fezcc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEZcc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fezseis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEZsies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../licenses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licenses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stay in Touch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-module-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Module Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-common-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Common Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-detailed-documentation-for-each-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Detailed Documentation for Each Class
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Detailed Documentation for Each Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-burncalculator-burn-severity-calculation-dnbr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. BurnCalculator – Burn Severity Calculation (dNBR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-indicescalculator-compute-nbr-for-a-single-date" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. IndicesCalculator – Compute NBR for a Single Date
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-magdircalculator-change-vector-magnitude-and-direction-cva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. MagDirCalculator – Change Vector Magnitude and Direction (CVA)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-subdivcalculator-simple-band-subtraction-or-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. SubDivCalculator – Simple Band Subtraction or Division
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-timecalculator-raw-image-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. TimeCalculator – Raw Image Extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-important-technical-notes-for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Important Technical Notes for Developers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Change Detection</h1>
+
+<h3 id="1-module-introduction">1. Module Introduction<a class="headerlink" href="#1-module-introduction" title="Permanent link">&para;</a></h3>
+<p>This module contains a set of tools for analysing <strong>temporal changes</strong> in satellite images. The main goal is to identify and quantify changes that have occurred between two time periods – typically before and after an event such as a fire, a flood, or land‑use modification.</p>
+<p><strong>Existing Classes :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>Specialised Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BurnCalculator</code></td>
+<td>Identifies burned areas using the <strong>Normalized Burn Ratio (NBR)</strong> and its differenced form dNBR</td>
+</tr>
+<tr>
+<td><code>IndicesCalculator</code></td>
+<td>Calculates the NBR index for either the pre‑event or the post‑event image</td>
+</tr>
+<tr>
+<td><code>MagDirCalculator</code></td>
+<td>Computes the <strong>change vector</strong> (magnitude and direction) in the NIR–SWIR spectral space</td>
+</tr>
+<tr>
+<td><code>SubDivCalculator</code></td>
+<td>Performs simple subtraction or division between bands of the two dates</td>
+</tr>
+<tr>
+<td><code>TimeCalculator</code></td>
+<td>Extracts one of the input images (pre‑ or post‑event) in raw form</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="2-common-dependencies">2. Common Dependencies<a class="headerlink" href="#2-common-dependencies" title="Permanent link">&para;</a></h3>
+<p>All classes in this module inherit from <code>fezrs.base.BaseTool</code> and use the <code>self.files_handler</code> mechanism for file management. The main processing method in each class is named <code>process()</code>, and the final output is saved via the <code>execute()</code> method.</p>
+<hr />
+<h3 id="3-detailed-documentation-for-each-class">3. Detailed Documentation for Each Class<a class="headerlink" href="#3-detailed-documentation-for-each-class" title="Permanent link">&para;</a></h3>
+<h4 id="31-burncalculator-burn-severity-calculation-dnbr">3.1. <code>BurnCalculator</code> – Burn Severity Calculation (dNBR)<a class="headerlink" href="#31-burncalculator-burn-severity-calculation-dnbr" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Compute the differenced Normalized Burn Ratio (dNBR), the standard metric for determining fire severity and mapping burn scars.</p>
+<p><strong>Full Explanation of the Formulas</strong></p>
+<p>The Normalized Burn Ratio (NBR) is a spectral index that leverages the distinct spectral behaviour of healthy vegetation and burned surfaces in the near‑infrared (NIR) and short‑wave infrared (SWIR2) regions.</p>
+<ul>
+<li>
+<p><strong>Spectral basis :</strong><br />
+    Healthy green vegetation reflects strongly in NIR (typically 40–60% of incoming radiation) while absorbing most SWIR2 due to leaf water content. After a fire, vegetation is removed, exposing soil and ash. Ash and bare soil reflect much less in NIR and more in SWIR2 relative to vegetation. Consequently, fire‑affected areas show a sharp drop in NIR reflectance and an increase in SWIR2 reflectance.</p>
+</li>
+<li>
+<p><strong>Normalized Burn Ratio (NBR) :</strong><br />
+    The NBR index captures this contrast through a normalised difference formula:</p>
+<p>$$NBR = \frac{NIR - SWIR2}{NIR + SWIR2}$$​</p>
+<p>This formulation is borrowed from the well‑known NDVI but uses SWIR2 instead of red. The normalisation by the sum of the two bands reduces the influence of variable illumination (sun angle, topography) and atmospheric effects.<br />
+NBR values theoretically range from –1 to +1:</p>
+<ul>
+<li>
+<p>High positive values (≈ +0.5 to +1) indicate robust vegetation (high NIR, low SWIR2).</p>
+</li>
+<li>
+<p>Low or negative values are associated with bare soil, rock, or burned areas.</p>
+</li>
+<li>
+<p>Water bodies produce negative NBR because NIR is strongly absorbed and SWIR2 may be relatively higher.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Differenced NBR (dNBR) :</strong><br />
+    To isolate change due exclusively to fire, the NBR of the pre‑event image is subtracted from that of the post‑event image :</p>
+<p>$$dNBR = NBR_{before} - NBR_{after}$$</p>
+<p>A positive dNBR means the NBR decreased after the event, i.e., the pixel lost vegetation and likely burned. The magnitude of dNBR correlates with burn severity.</p>
+<p>In the code, the subtraction is implemented as <code>indices_before - indices_after</code>, which is mathematically equivalent.</p>
+</li>
+<li>
+<p><strong>Severity thresholding :</strong><br />
+    The code then applies a threshold <code>dNBR &gt; 0.7</code> to produce a binary mask of high‑severity burned areas.<br />
+    Standard interpretation of dNBR (Key &amp; Benson, 2006; USGS) is:</p>
+<ul>
+<li>
+<p>dNBR &lt; 0.1 → unburned</p>
+</li>
+<li>
+<p>0.1 – 0.27 → low severity</p>
+</li>
+<li>
+<p>0.27 – 0.66 → moderate severity</p>
+</li>
+<li>
+<p><code>&gt;</code> 0.66 → high severity<br />
+    The value 0.7 is a conservative, commonly used cutoff for severe burns. The output is a Boolean array (<code>True</code> for high severity).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Mathematical note on division by zero :</strong><br />
+    The denominator <code>NIR + SWIR2</code> can be zero (e.g., in areas of complete darkness). In practice, such pixels are rare, but if they occur, the resulting <code>NaN</code> is handled by the <code>&gt; 0.7</code> comparison (evaluating to <code>False</code>). A future improvement could explicitly set these to <code>False</code>.</p>
+</li>
+</ul>
+<p><strong>Input parameters (<code>__init__</code>) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>Path to the NIR band file (post‑event)</td>
+</tr>
+<tr>
+<td><code>swir2_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>Path to the SWIR2 band file (post‑event)</td>
+</tr>
+<tr>
+<td><code>before_nir_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>Path to the NIR band file (pre‑event)</td>
+</tr>
+<tr>
+<td><code>before_swir2_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>Path to the SWIR2 band file (pre‑event)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return value of <code>process()</code> :</strong><br />
+<code>numpy.ndarray</code> of type <code>bool</code> (burn mask).</p>
+<p><strong>Usage example :</strong>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fezrs.tools.change_detection</span><span class="w"> </span><span class="kn">import</span> <span class="n">BurnCalculator</span>
+
+<span class="n">calc</span> <span class="o">=</span> <span class="n">BurnCalculator</span><span class="p">(</span>
+    <span class="n">nir_path</span><span class="o">=</span><span class="s2">&quot;path/to/after_B4.tif&quot;</span><span class="p">,</span>
+    <span class="n">swir2_path</span><span class="o">=</span><span class="s2">&quot;path/to/after_B7.tif&quot;</span><span class="p">,</span>
+    <span class="n">before_nir_path</span><span class="o">=</span><span class="s2">&quot;path/to/before_B4.tif&quot;</span><span class="p">,</span>
+    <span class="n">before_swir2_path</span><span class="o">=</span><span class="s2">&quot;path/to/before_B7.tif&quot;</span>
+<span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;./results/&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Burn Severity Mask&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="32-indicescalculator-compute-nbr-for-a-single-date">3.2. <code>IndicesCalculator</code> – Compute NBR for a Single Date<a class="headerlink" href="#32-indicescalculator-compute-nbr-for-a-single-date" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Calculate the raw Normalized Burn Ratio (NBR) for one of the two images (pre‑event or post‑event only). This tool is useful for previewing the vegetation condition on a single date or for intermediate analyses.</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<ul>
+<li>
+<p>The NBR formula is identical to that in <code>BurnCalculator</code>:</p>
+<p>$$NBR = \frac{NIR - SWIR2}{NIR + SWIR2}$$</p>
+<p>The choice of the image is controlled by the <code>time</code> parameter. If <code>"after"</code>, the post‑event NIR and SWIR2 bands are used; if <code>"before"</code>, the pre‑event bands are used.</p>
+</li>
+<li>
+<p>The output is a floating‑point array between –1 and 1. Since no differencing is applied, the result shows the absolute vegetation‑fuel condition at that date. For example, a low NBR in a pre‑fire image might already indicate a dry, stressed vegetation state, whereas a high NBR suggests lush vegetation.</p>
+</li>
+<li>
+<p>This index can be used independently of fire – it is essentially a vegetation index sensitive to leaf water content and standing biomass, and can be applied to any multi‑spectral image possessing NIR and SWIR2 bands.</p>
+</li>
+</ul>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>NIR band (post‑event)</td>
+</tr>
+<tr>
+<td><code>swir2_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>SWIR2 band (post‑event)</td>
+</tr>
+<tr>
+<td><code>before_nir_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>NIR band (pre‑event)</td>
+</tr>
+<tr>
+<td><code>before_swir2_path</code></td>
+<td><code>str</code> or <code>Path</code></td>
+<td>SWIR2 band (pre‑event)</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><code>Literal["before", "after"]</code></td>
+<td>Determines for which image NBR is computed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return value :</strong><br />
+<code>numpy.ndarray</code> (float values between –1 and 1).</p>
+<p><strong>Usage example :</strong>
+<div class="highlight"><pre><span></span><code><span class="n">calc</span> <span class="o">=</span> <span class="n">IndicesCalculator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;./output&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NBR After Event&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="33-magdircalculator-change-vector-magnitude-and-direction-cva">3.3. <code>MagDirCalculator</code> – Change Vector Magnitude and Direction (CVA)<a class="headerlink" href="#33-magdircalculator-change-vector-magnitude-and-direction-cva" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Perform Change Vector Analysis (CVA) in the two‑band spectral space formed by NIR and SWIR1. For each pixel, the algorithm calculates both the <strong>magnitude</strong> of change (how much it changed) and the <strong>direction</strong> (what kind of change occurred).</p>
+<p><strong>Full Explanation of the Formulas</strong>
+CVA models a pixel’s spectral evolution as a vector. If we plot the pre‑event pixel as a point ($NIR_{\text{before}}, SWIR1_{\text{before}}$​) and the post‑event pixel as ($NIR_{\text{after}}, SWIR1_{\text{after}}$), the change vector is :</p>
+<p>$$\vec{V} = (NIR_{after} - NIR_{before}, SWIR1_{after} - SWIR1_{before})$$</p>
+<ul>
+<li><strong>Magnitude of change :</strong><br />
+    The Euclidean length of $\vec{V}$ quantifies the total spectral change :</li>
+</ul>
+<p>$$|\vec{V}| = \sqrt{(NIR_{after} - NIR_{before})^2 + (SWIR1_{after} - SWIR1_{before})^2}$$</p>
+<div class="highlight"><pre><span></span><code>Larger magnitude implies a stronger alteration, regardless of its nature. This is particularly useful for rapidly identifying hotspots of change (e.g., logging, fire, urban expansion).
+</code></pre></div>
+<ul>
+<li><strong>Direction of change (discrete coding) :</strong><br />
+    The direction is determined by the signs of the differences in both bands. The algorithm assigns a code from 1 to 4 based on these sign combinations :</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>NIR change</th>
+<th>SWIR1 change</th>
+<th>Code</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>decrease</td>
+<td>decrease</td>
+<td>1</td>
+<td>Vegetation decrease + moisture decrease (e.g., fire, die‑off)</td>
+</tr>
+<tr>
+<td>increase</td>
+<td>decrease</td>
+<td>2</td>
+<td>Vegetation increase + moisture decrease (healthy plant growth)</td>
+</tr>
+<tr>
+<td>decrease</td>
+<td>increase</td>
+<td>3</td>
+<td>Vegetation decrease + moisture increase (flood, soil saturation)</td>
+</tr>
+<tr>
+<td>increase</td>
+<td>increase</td>
+<td>4</td>
+<td>Both increase (possible atmospheric or sensor anomaly, or land‑cover conversion to brighter surface)</td>
+</tr>
+<tr>
+<td>These codes are discrete and qualitative; they do not capture the precise angle of the vector. For a full quantitative CVA, one would compute the angular direction $θ=arctan2$ ($SWIR1_{\text{diff}}, NIR_{\text{diff}}$) and potentially define sectors for different change types. The current approach provides a simple and intuitive classification.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>Physical interpretation of bands in CVA :</strong><br />
+    NIR is sensitive to vegetation amount and vigour; SWIR1 is sensitive to moisture content (leaf water, soil moisture). Therefore :</p>
+<ul>
+<li>
+<p>Code 1 (both decrease) : loss of photosynthetically active vegetation and drying → typical of fire scars or severe drought.</p>
+</li>
+<li>
+<p>Code 2 (NIR up, SWIR1 down) : regrowth of healthy plants (higher NIR) and low SWIR1 (less moisture stress) → typical of reforestation or crop development.</p>
+</li>
+<li>
+<p>Code 3 (NIR down, SWIR1 up) : vegetation removal (NIR drops) and wetter surface (SWIR1 increases) → flooding or irrigation.</p>
+</li>
+<li>
+<p>Code 4 (both increase) : could indicate a change from water to soil/urban (both bands increase), but also can be caused by residual clouds or shadows if not properly masked.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>Post‑event NIR band</td>
+</tr>
+<tr>
+<td><code>swir1_path</code></td>
+<td><code>Path</code></td>
+<td>Post‑event SWIR1 band (usually Landsat Band 5)</td>
+</tr>
+<tr>
+<td><code>before_nir_path</code></td>
+<td><code>Path</code></td>
+<td>Pre‑event NIR band</td>
+</tr>
+<tr>
+<td><code>before_swir1_path</code></td>
+<td><code>Path</code></td>
+<td>Pre‑event SWIR1 band</td>
+</tr>
+<tr>
+<td><code>selecte</code></td>
+<td><code>Literal["magnitude", "direction"]</code></td>
+<td>Type of output to produce</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return value :</strong></p>
+<ul>
+<li>
+<p>If <code>"magnitude"</code>: array of floating‑point values (change intensity).</p>
+</li>
+<li>
+<p>If <code>"direction"</code>: array of integers 1–4 (change type code).</p>
+</li>
+</ul>
+<p><strong>Usage example :</strong>
+<div class="highlight"><pre><span></span><code><span class="n">calc</span> <span class="o">=</span> <span class="n">MagDirCalculator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">selecte</span><span class="o">=</span><span class="s2">&quot;magnitude&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;./output&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Change Magnitude&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="34-subdivcalculator-simple-band-subtraction-or-division">3.4. <code>SubDivCalculator</code> – Simple Band Subtraction or Division<a class="headerlink" href="#34-subdivcalculator-simple-band-subtraction-or-division" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+A helper tool to visualise the absolute or relative difference of a specific band (e.g., NIR) between two dates. This gives a quick, intuitive picture of change without complex indices.</p>
+<p><strong>Full Explanation of the Formulas</strong></p>
+<p>Two operations are provided :</p>
+<ul>
+<li><strong>Subtraction :</strong></li>
+</ul>
+<p>$$\Delta = Band_{\text{before}} - Band_{\text{after}}$$      <br />
+    This gives the absolute change in reflectance (or digital number). Positive values imply a reduction of reflectance after the event (e.g., vegetation loss), and negative values indicate an increase (e.g., sediment deposition, new built‑up). The result retains the original physical units of the band and is sensitive to the overall brightness of the scene.</p>
+<ul>
+<li><strong>Division (ratio) :</strong></li>
+</ul>
+<p>$$R = \frac{Band_{before}}{Band_{after}}$$  <br />
+    The ratio compensates for illumination differences and multiplicative noise. A ratio of 1 means no change; &gt;1 indicates the before value was larger (a decrease after the event); &lt;1 indicates an increase after the event. Ratios are inherently non‑negative and can become very large if the denominator is near zero, so a small epsilon can be added in future versions to avoid division‑by‑zero errors.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>Post‑event NIR band (or any band of choice)</td>
+</tr>
+<tr>
+<td><code>before_nir_path</code></td>
+<td><code>Path</code></td>
+<td>Pre‑event NIR band</td>
+</tr>
+<tr>
+<td><code>operation</code></td>
+<td><code>Literal["subtract", "divide"]</code></td>
+<td>Mathematical operation to apply</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return value :</strong><br />
+<code>numpy.ndarray</code> resulting from the chosen operation.</p>
+<p><strong>Usage example :</strong>
+<div class="highlight"><pre><span></span><code><span class="n">calc</span> <span class="o">=</span> <span class="n">SubDivCalculator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">operation</span><span class="o">=</span><span class="s2">&quot;subtract&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;./output&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NIR Difference (Before - After)&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="35-timecalculator-raw-image-extraction">3.5. <code>TimeCalculator</code> – Raw Image Extraction<a class="headerlink" href="#35-timecalculator-raw-image-extraction" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+This class provides a simple wrapper for direct access to the NumPy data of one of the two input images. It is used for debugging or for displaying a raw image in the user interface, serving as a baseline.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>Post‑event NIR band</td>
+</tr>
+<tr>
+<td><code>before_nir_path</code></td>
+<td><code>Path</code></td>
+<td>Pre‑event NIR band</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><code>Literal["before", "after"]</code></td>
+<td>Selects the desired image</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return value :</strong><br />
+NumPy array of the chosen NIR band (float values after standardisation).</p>
+<p><strong>Usage example :</strong>
+<div class="highlight"><pre><span></span><code><span class="n">calc</span> <span class="o">=</span> <span class="n">TimeCalculator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="s2">&quot;before&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;./output&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw NIR Image Before Event&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h3 id="4-important-technical-notes-for-developers">4. Important Technical Notes for Developers<a class="headerlink" href="#4-important-technical-notes-for-developers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Path handling :</strong> The classes support <code>pathlib.Path</code>.</p>
+</li>
+<li>
+<p><strong>Output resolution :</strong> All <code>execute()</code> methods set <code>dpi=500</code>, which is suitable for high‑quality printed outputs.</p>
+</li>
+<li>
+<p><strong>Validation (<code>_validate</code>) :</strong> In the current version these methods are empty. It is recommended to add a check for equal dimensions of pre‑ and post‑event images in future versions to avoid NumPy broadcasting errors.</p>
+</li>
+<li>
+<p><strong>Nested loops in <code>MagDirCalculator</code>:</strong> This part of the code is written with plain Python <code>for</code> loops. For large images (e.g., full Landsat scenes) it will be very slow.<br />
+<strong>Suggested optimisation :</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use vectorised NumPy operations instead of loops:</span>
+<span class="n">diff_nir</span> <span class="o">=</span> <span class="n">before_nir</span> <span class="o">-</span> <span class="n">nir</span>
+<span class="n">diff_swir</span> <span class="o">=</span> <span class="n">before_swir1</span> <span class="o">-</span> <span class="n">swir1</span>
+<span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">diff_nir</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">diff_swir</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">([(</span><span class="n">diff_nir</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">diff_swir</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">),</span> <span class="o">...</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mhdned" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascript/extra.js"></script>
+      
+    
+  </body>
+</html>
