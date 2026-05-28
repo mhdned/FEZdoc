@@ -1,0 +1,1776 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Remote Sensing Python Tools">
+      
+      
+        <meta name="author" content="mhdned">
+      
+      
+        <link rel="canonical" href="https://mhdned.github.io/FEZdoc/libraries/fezrs/spectral-indices/">
+      
+      
+        <link rel="prev" href="../pca/">
+      
+      
+        <link rel="next" href="../spectral-profile/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Spectral Indices - FEZdoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../styles/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-module-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FEZdoc" class="md-header__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FEZdoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spectral Indices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3.55 19.09 1.41 1.41 1.8-1.79-1.42-1.42M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6c0-3.32-2.69-6-6-6m8 7h3v-2h-3m-2.76 7.71 1.8 1.79 1.41-1.41-1.79-1.8M20.45 5l-1.41-1.4-1.8 1.79 1.42 1.42M13 1h-2v3h2M6.76 5.39 4.96 3.6 3.55 5l1.79 1.81zM1 13h3v-2H1m12 9h-2v3h2"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mhdned/FEZdoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FEZdoc
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  Libraries
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../licenses/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Licenses
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Stay in Touch
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FEZdoc" class="md-nav__button md-logo" aria-label="FEZdoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    FEZdoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mhdned/FEZdoc" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FEZdoc
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Libraries
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Libraries
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEZrs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FEZrs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../change-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change Detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clustering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clustering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glcm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GLCM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hsv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HSV
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image-enhancement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Enhancement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../import-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mosaic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mosaic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spectral Indices
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spectral Indices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-module-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Module Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-detailed-documentation-of-each-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Detailed Documentation of Each Class
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Detailed Documentation of Each Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-afvicalculator-advanced-forest-vegetation-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. AFVICalculator – Advanced Forest Vegetation Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-bicalculator-bare-soil-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. BICalculator – Bare Soil Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ndvicalculator-normalised-difference-vegetation-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. NDVICalculator – Normalised Difference Vegetation Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ndwicalculator-normalised-difference-water-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. NDWICalculator – Normalised Difference Water Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-savicalculator-soil-adjusted-vegetation-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. SAVICalculator – Soil Adjusted Vegetation Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-uicalculator-urban-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. UICalculator – Urban Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-summary-table-of-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Summary Table of Indices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-common-technical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Common Technical Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spectral-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spectral Profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../svm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fezcc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEZcc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fezseis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEZsies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../licenses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licenses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stay in Touch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-module-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Module Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-detailed-documentation-of-each-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Detailed Documentation of Each Class
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Detailed Documentation of Each Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-afvicalculator-advanced-forest-vegetation-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. AFVICalculator – Advanced Forest Vegetation Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-bicalculator-bare-soil-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. BICalculator – Bare Soil Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ndvicalculator-normalised-difference-vegetation-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. NDVICalculator – Normalised Difference Vegetation Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ndwicalculator-normalised-difference-water-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. NDWICalculator – Normalised Difference Water Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-savicalculator-soil-adjusted-vegetation-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. SAVICalculator – Soil Adjusted Vegetation Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-uicalculator-urban-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6. UICalculator – Urban Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-summary-table-of-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Summary Table of Indices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-common-technical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Common Technical Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Spectral Indices</h1>
+
+<h3 id="1-module-introduction">1. Module Introduction<a class="headerlink" href="#1-module-introduction" title="Permanent link">&para;</a></h3>
+<p>This module provides a set of <strong>spectral indices</strong> for extracting quantitative information from satellite images. Each index highlights a specific surface feature by mathematically combining two or more spectral bands. The indices are widely used in vegetation monitoring, water resource mapping, soil detection, and urban studies.</p>
+<p><strong>Existing Classes :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Class Name</th>
+<th>Index</th>
+<th>Main Application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AFVICalculator</code></td>
+<td>AFVI</td>
+<td>Dense forest and vegetation monitoring</td>
+</tr>
+<tr>
+<td><code>BICalculator</code></td>
+<td>BI</td>
+<td>Bare soil and non‑vegetated area identification</td>
+</tr>
+<tr>
+<td><code>NDVICalculator</code></td>
+<td>NDVI</td>
+<td>Vegetation health and density</td>
+</tr>
+<tr>
+<td><code>NDWICalculator</code></td>
+<td>NDWI</td>
+<td>Water body and moisture detection</td>
+</tr>
+<tr>
+<td><code>SAVICalculator</code></td>
+<td>SAVI</td>
+<td>Modified NDVI for areas with sparse vegetation</td>
+</tr>
+<tr>
+<td><code>UICalculator</code></td>
+<td>UI</td>
+<td>Urban and built‑up area identification</td>
+</tr>
+</tbody>
+</table>
+<p>All classes inherit from <code>BaseTool</code> and utilise the <code>files_handler</code> for band loading and automatic normalisation to $[0,1]$ via <code>get_normalized_bands</code>.</p>
+<hr />
+<h3 id="2-detailed-documentation-of-each-class">2. Detailed Documentation of Each Class<a class="headerlink" href="#2-detailed-documentation-of-each-class" title="Permanent link">&para;</a></h3>
+<h4 id="21-afvicalculator-advanced-forest-vegetation-index">2.1. <code>AFVICalculator</code> – Advanced Forest Vegetation Index<a class="headerlink" href="#21-afvicalculator-advanced-forest-vegetation-index" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Discriminate dense vegetation (particularly forests) while reducing sensitivity to variations in illumination, shadow, and background soil. The AFVI is designed to maximise the contrast between photosynthetically active vegetation and other land covers.</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<p>The AFVI implemented in the code is :</p>
+<p>$$AFVI = (NIR - 0.66) \times \left( \frac{SWIR1}{NIR + 0.66 \times SWIR1} \right)$$</p>
+<p>This formula can be broken down into two interacting components :</p>
+<ol>
+<li>
+<p><strong>NIR offset term (NIR−0.66)(NIR−0.66):</strong><br />
+    In the normalised band space $[0,1]$, healthy green vegetation typically exhibits high NIR reflectance (well above 0.5) due to strong scattering by the leaf mesophyll, while SWIR1 reflectance is lower because of water absorption. The constant 0.66 acts as a threshold; pixels with $NIR&lt;0.66$ (e.g., water, bare soil, urban surfaces) produce a negative or very small first factor, suppressing the index. Pixels with $NIR&gt;0.66$ (dense vegetation) yield a positive contribution. The value 0.66 is an empirically derived reference level calibrated for typical forest reflectance ranges in NIR.</p>
+</li>
+<li>
+<p><strong>SWIR1 ratio term $\frac{SWIR1}{NIR + 0.66 \times SWIR1}$ :</strong><br />
+    This is a non‑linear ratio that modulates the NIR offset. For healthy vegetation, SWIR1 is considerably lower than NIR, so the ratio becomes small (approaching $\frac{low}{high + 0.66 \times low}$ $≈\text{low}$ value). The product of a positive $(NIR−0.66)$ and a small ratio still yields a moderate positive value. For non‑vegetated surfaces where SWIR1 is high and NIR is low, the ratio becomes larger while $(NIR−0.66)$ is negative, producing a strong negative or near‑zero output. Thus the AFVI effectively suppresses confusing signals from bright soils, water, and shadows.</p>
+</li>
+</ol>
+<p>The output range in practice lies roughly between 0 and 1 for dense vegetation, with higher values indicating greater canopy density. Because the bands are normalised to $[0,1]$, the index is well‑suited for multi‑temporal comparisons without additional calibration.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>NIR band file</td>
+</tr>
+<tr>
+<td><code>swir1_path</code></td>
+<td><code>Path</code></td>
+<td>SWIR1 band file</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Range :</strong> ~0 to 1 (higher = denser vegetation)</p>
+<hr />
+<h4 id="22-bicalculator-bare-soil-index">2.2. <code>BICalculator</code> – Bare Soil Index<a class="headerlink" href="#22-bicalculator-bare-soil-index" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Identify bare soil, rock, and built‑up areas, exploiting the spectral contrast between vegetation and non‑vegetated surfaces.</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<p>The Bare Soil Index (BI) is computed as :</p>
+<p>$$BI = \frac{(NIR - Green) - Red}{(NIR + Green) + Red}$$</p>
+<p>This can be rewritten as :</p>
+<p>$$BI = \frac{NIR - Green - Red}{NIR + Green + Red}$$</p>
+<p>The formulation is a normalised difference between the NIR band and the sum of the two visible bands (Green and Red). The physical basis is :</p>
+<ul>
+<li><strong>Vegetation :</strong> Green plants reflect moderately in Green, absorb strongly in Red (due to chlorophyll), and reflect strongly in NIR. Therefore, for vegetation, $\text{NIR}≫\text{Green}+\text{Red}$, leading to a large positive numerator and a positive denominator, resulting in a positive BI value. However, typical healthy vegetation actually yields a <em>negative</em> BI when using the common definition (note : many published BI formulas are inverted). In this implementation, because the numerator is $\text{NIR}−(\text{Green}+\text{Red})$, dense vegetation with $\text{NIR}&gt;\text{Green}+\text{Red}$ gives <strong>positive</strong> values, while bare soil, where $\text{NIR}≈\text{Green}≈\text{Red}$ (all relatively similar), yields values near zero. Bare soil can even give negative values if the visible bands exceed NIR. Urban areas (concrete, asphalt) often exhibit low NIR and higher visible reflectance, resulting in negative BI.</li>
+</ul>
+<p>Thus, <strong>positive BI values indicate vegetation</strong>, while <strong>negative or near‑zero values indicate bare soil or urban surfaces</strong>. The exact interpretation depends on the sensor and the region, but the index provides a continuous measure where lower (more negative) values correspond to a greater proportion of exposed soil or built‑up material.</p>
+<p>The normalisation by the sum $\text{NIR}+\text{Green}+\text{Red}$ in the denominator reduces sensitivity to overall brightness, making the index more robust to topographic shading.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>NIR band file</td>
+</tr>
+<tr>
+<td><code>red_path</code></td>
+<td><code>Path</code></td>
+<td>Red band file</td>
+</tr>
+<tr>
+<td><code>green_path</code></td>
+<td><code>Path</code></td>
+<td>Green band file</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Range :</strong> −1 to +1 (positive = vegetation, negative = bare soil/urban in this implementation)</p>
+<hr />
+<h4 id="23-ndvicalculator-normalised-difference-vegetation-index">2.3. <code>NDVICalculator</code> – Normalised Difference Vegetation Index<a class="headerlink" href="#23-ndvicalculator-normalised-difference-vegetation-index" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+The NDVI is the most widely used spectral index for assessing the presence, health, and density of green vegetation. It leverages the sharp contrast between the strong reflectance of vegetation in the NIR and the strong absorption in the Red due to chlorophyll.</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<p>$$NDVI = \frac{NIR - Red}{NIR + Red}$$</p>
+<ul>
+<li>
+<p><strong>Physical basis :</strong> Chlorophyll in healthy leaves absorbs most of the incident red light (low Red reflectance), while the spongy mesophyll tissue scatters NIR radiation strongly (high NIR reflectance). Therefore, NDVI approaches +1 for dense, healthy vegetation.</p>
+</li>
+<li>
+<p><strong>For bare soil and rock :</strong> Reflectance is typically similar in both NIR and Red, so the numerator is small and NDVI is near 0 (often between 0.1 and 0.2).</p>
+</li>
+<li>
+<p><strong>For water :</strong> Water absorbs almost all NIR, so NIR is near 0, while Red may still have some reflectance. As a result, NDVI becomes negative.</p>
+</li>
+<li>
+<p><strong>Clouds and snow :</strong> Reflectance is high and similar in both bands, yielding NDVI close to 0 (though sometimes slightly negative).</p>
+</li>
+</ul>
+<p>The normalised ratio structure $\frac{a-b}{a+b}$​ automatically compensates for multiplicative factors such as sun angle variation and atmospheric transmittance, as long as those factors affect both bands similarly. The index ranges from −1 to +1.</p>
+<p>In the code, the input bands are normalised to $[0,1]$ before computation, ensuring that NDVI values are consistent regardless of the sensor’s original dynamic range.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>NIR band file</td>
+</tr>
+<tr>
+<td><code>red_path</code></td>
+<td><code>Path</code></td>
+<td>Red band file</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong>
+<div class="highlight"><pre><span></span><code><span class="n">calc</span> <span class="o">=</span> <span class="n">NDVICalculator</span><span class="p">(</span><span class="n">nir_path</span><span class="o">=</span><span class="s2">&quot;B5.tif&quot;</span><span class="p">,</span> <span class="n">red_path</span><span class="o">=</span><span class="s2">&quot;B4.tif&quot;</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NDVI&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;RdYlGn&quot;</span><span class="p">,</span> <span class="n">show_colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="24-ndwicalculator-normalised-difference-water-index">2.4. <code>NDWICalculator</code> – Normalised Difference Water Index<a class="headerlink" href="#24-ndwicalculator-normalised-difference-water-index" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Enhance the presence of open water bodies and assess vegetation moisture content, originally proposed by McFeeters (1996).</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<p>$$NDWI =\frac{\text{Green} - \text{NIR}}{\text{Green} + \text{NIR}}$$</p>
+<ul>
+<li>
+<p><strong>Physics :</strong> Water strongly absorbs NIR radiation, whereas it reflects a small amount of green light (which is why clear water often appears greenish or blue to the human eye). Consequently, for water pixels, $\text{Green}&gt;\text{NIR}$, leading to positive NDWI values (approaching +1 for very clear, deep water).</p>
+</li>
+<li>
+<p><strong>Vegetation :</strong> Healthy vegetation reflects significantly in NIR and moderately in Green, so $\text{NIR}&gt;\text{Green}$, resulting in negative NDWI values.</p>
+</li>
+<li>
+<p><strong>Bare soil and urban :</strong> Typically have roughly similar reflectance in Green and NIR, producing NDWI values around 0.</p>
+</li>
+</ul>
+<p>This index effectively separates water from land. It is also sensitive to the water content of vegetation, but a different formulation (using SWIR) is often employed for vegetation moisture (Gao’s NDWI). The current implementation is the classic water‑index version.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>green_path</code></td>
+<td><code>Path</code></td>
+<td>Green band file</td>
+</tr>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>NIR band file</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Range :</strong> −1 to +1 (positive = water; negative = vegetation/soil)</p>
+<hr />
+<h4 id="25-savicalculator-soil-adjusted-vegetation-index">2.5. <code>SAVICalculator</code> – Soil Adjusted Vegetation Index<a class="headerlink" href="#25-savicalculator-soil-adjusted-vegetation-index" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Modify the NDVI to account for the influence of soil background in areas with sparse vegetation (arid and semi‑arid regions). By introducing an adjustment factor, SAVI minimises the effect of soil brightness variations.</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<p>The standard SAVI (Huete, 1988) is defined as :</p>
+<p>$$SAVI =\frac{NIR - Red}{NIR + Red + L} \times (1 + L)$$</p>
+<p>where $L$ is a soil‑adjustment factor. For intermediate vegetation cover, $L=0.5$ is commonly used. The code implements exactly this with $L=0.5$ :</p>
+<p>$$SAVI =  \frac{\text{NIR} - \text{Red}}{\text{NIR} + \text{Red} + 0.5} \times 1.5$$</p>
+<ul>
+<li>
+<p><strong>Role of LL :</strong> The additional term LL in the denominator reduces the sensitivity of the index to soil brightness. When vegetation is sparse, the soil background contributes significantly to the reflected signal. Without adjustment, NDVI can be artificially raised by bright soils. The factor LL moves the “soil line” to the origin in the NIR–Red feature space, making SAVI nearly insensitive to soil brightness variations.</p>
+</li>
+<li>
+<p><strong>Multiplication by $1+L$ :</strong> This scaling ensures that SAVI values remain comparable to NDVI range‑wise (roughly −1 to +1). For dense vegetation, SAVI is only slightly lower than NDVI; for sparse vegetation, SAVI is substantially lower, giving a more accurate measure of green cover.</p>
+</li>
+</ul>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>NIR band file</td>
+</tr>
+<tr>
+<td><code>red_path</code></td>
+<td><code>Path</code></td>
+<td>Red band file</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="26-uicalculator-urban-index">2.6. <code>UICalculator</code> – Urban Index<a class="headerlink" href="#26-uicalculator-urban-index" title="Permanent link">&para;</a></h4>
+<p><strong>Scientific objective</strong><br />
+Discriminate urban and built‑up areas from other land covers by exploiting the spectral contrast between SWIR2 and NIR.</p>
+<p><strong>Full Explanation of the Formula</strong></p>
+<p>$$UI = \frac{\text{SWIR2} - \text{NIR}}{\text{SWIR2} + \text{NIR}}$$</p>
+<ul>
+<li>
+<p><strong>Spectral behaviour :</strong> Urban surfaces (asphalt, concrete, rooftops) generally exhibit higher reflectance in SWIR2 than in NIR, because these materials lack the strong NIR scattering of vegetation. Conversely, dense vegetation has high NIR and relatively low SWIR2 (due to leaf water absorption). Therefore, for urban areas, $SWIR2&gt;NIR → UI$ positive. For vegetation, $NIR&gt;SWIR2 → UI$ negative.</p>
+</li>
+<li>
+<p><strong>Water and bare soil :</strong> Water has near‑zero NIR and SWIR2, often leading to near‑zero UI (or slightly negative due to small differences). Bare soil can have variable UI depending on mineral composition, but generally lies between urban and vegetation values.</p>
+</li>
+</ul>
+<p>This index helps to separate built‑up regions from surrounding vegetated areas, and is particularly useful in land‑cover classification and urban growth mapping.</p>
+<p><strong>Input parameters :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nir_path</code></td>
+<td><code>Path</code></td>
+<td>NIR band file</td>
+</tr>
+<tr>
+<td><code>swir2_path</code></td>
+<td><code>Path</code></td>
+<td>SWIR2 band file</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Range :</strong> −1 to +1 (positive = urban, negative = vegetation)</p>
+<hr />
+<h3 id="3-summary-table-of-indices">3. Summary Table of Indices<a class="headerlink" href="#3-summary-table-of-indices" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Required Bands</th>
+<th>Application</th>
+<th>Simplified Formula (with constants)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AFVI</td>
+<td>NIR, SWIR1</td>
+<td>Dense forest vegetation</td>
+<td>$(NIR - 0.66) \times SWIR1 / (NIR + 0.66 \cdot SWIR1)$</td>
+</tr>
+<tr>
+<td>BI</td>
+<td>NIR, Red, Green</td>
+<td>Bare soil / urban</td>
+<td>$((NIR - Green) - Red) / ((NIR + Green) + Red)$</td>
+</tr>
+<tr>
+<td>NDVI</td>
+<td>NIR, Red</td>
+<td>General vegetation</td>
+<td>$(NIR - Red) / (NIR + Red)$</td>
+</tr>
+<tr>
+<td>NDWI</td>
+<td>Green, NIR</td>
+<td>Water &amp; moisture</td>
+<td>$(Green - NIR) / (Green + NIR)$</td>
+</tr>
+<tr>
+<td>SAVI</td>
+<td>NIR, Red</td>
+<td>Sparse vegetation (arid)</td>
+<td>$((NIR - Red) / (NIR + Red + 0.5)) \times 1.5$</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>NIR, SWIR2</td>
+<td>Urban areas</td>
+<td>$(SWIR2 - NIR) / (SWIR2 + NIR)$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="4-common-technical-notes">4. Common Technical Notes<a class="headerlink" href="#4-common-technical-notes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Automatic normalisation :</strong> All calculators use <code>get_normalized_bands</code> to scale the input bands to $[0,1]$ before applying the index formula. This ensures consistent output regardless of the sensor’s bit depth.</p>
+</li>
+<li>
+<p><strong>Division by zero :</strong> In the normalised difference formulas, the denominator can approach zero for very dark pixels (e.g., deep shadows or clear water). NumPy converts divisions by zero to <code>NaN</code>. It is recommended to add a small epsilon or use <code>np.where</code> to replace <code>NaN</code> values with a predefined constant (e.g., 0) in future releases.</p>
+</li>
+<li>
+<p><strong>Recommended colormaps :</strong></p>
+<ul>
+<li>
+<p>NDVI, SAVI, AFVI → <code>'RdYlGn'</code> or <code>'YlGn'</code></p>
+</li>
+<li>
+<p>NDWI → <code>'Blues'</code></p>
+</li>
+<li>
+<p>BI, UI → <code>'hot'</code>, <code>'inferno'</code>, or <code>'coolwarm'</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sensor compatibility :</strong></p>
+<ul>
+<li>
+<p>Landsat 8 : NIR = Band 5, Red = Band 4, Green = Band 3, SWIR1 = Band 6, SWIR2 = Band 7</p>
+</li>
+<li>
+<p>Sentinel‑2 : NIR = Band 8, Red = Band 4, Green = Band 3, SWIR1 = Band 11, SWIR2 = Band 12</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Physical units :</strong> Since all bands are normalised to reflectance (or at least to a common scale), the indices are dimensionless and can be compared across different scenes and dates.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/mhdned" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "content.code.copy", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascript/extra.js"></script>
+      
+    
+  </body>
+</html>
